@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+changed_files=$(git diff --cached --name-only)
+
+if echo "$changed_files" | grep -E "config.yaml|config.schema.json|scripts/validate-config.js|.github/workflows/validate-config.yml|examples/" >/dev/null; then
+  echo "Running config validation..."
+  npm run validate-config
+fi

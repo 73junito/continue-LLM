@@ -1,0 +1,18 @@
+name: Ollama Example
+version: 1.0.0
+schema: v1
+
+models:
+  - id: llama3
+    name: llama3
+    provider: ollama
+    model: llama3:latest
+    apiBase: http://localhost:11434
+
+routes:
+  - match: '(chat|talk)'
+    model: llama3
+
+defaults:
+  timeout_seconds: 120
+  max_tokens: 8192
