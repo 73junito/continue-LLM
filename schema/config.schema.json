@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "config/root",
+  "title": "Continue Config (root)",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "schema": { "type": "string" },
+    "models": { "$ref": "defs/model#" },
+    "routes": { "$ref": "defs/route#" },
+    "defaults": { "$ref": "defs/defaults#" }
+  },
+  "required": ["name", "version", "schema", "models", "routes", "defaults"],
+  "additionalProperties": false
+}

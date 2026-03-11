@@ -1,0 +1,1459 @@
+{
+  "sessionId": "5a84f0b4-3dde-444c-8b24-d880f0965fdd",
+  "title": "max_tokens: 8192",
+  "workspaceDirectory": "vscode-remote://wsl%2Bubuntu/mnt/c/Automotive%20and%20Diesel%20LMS",
+  "history": [
+    {
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "name: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192"
+          }
+        ],
+        "id": "6b84d834-477f-4d08-abf2-4102791e5a9b"
+      },
+      "contextItems": [],
+      "editorState": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "name: Local Config"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "version: 1.0.0"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "schema: v1"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "models:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - id: explanation"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    name: Llama3"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    description: 'Use for explanations, summaries, and natural-language reasoning.'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    provider: ollama"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: llama3:latest"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    apiBase: http://127.0.0.1:11434"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - id: coding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    name: StarCoder2.3b"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    description: 'Use for code generation, edits, and developer tasks.'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    provider: ollama"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: starcoder2:3b"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    apiBase: http://127.0.0.1:11434"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "routes:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - match: '(explain|explanation|summary|summarize|describe|why|how)'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: explanation"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - match: '(code|implement|fix|refactor|patch|function|class|compile|error)'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: coding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "defaults:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  timeout_seconds: 120"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  max_tokens: 8192"
+              }
+            ]
+          }
+        ]
+      },
+      "appliedRules": []
+    },
+    {
+      "message": {
+        "id": "60990e02-277a-4d21-b88e-8e8865aff130",
+        "role": "assistant",
+        "content": ""
+      },
+      "contextItems": [],
+      "isGatheringContext": false
+    },
+    {
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "name: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192"
+          }
+        ],
+        "id": "0a4c1948-c39f-4972-aa53-3e35bf49305d"
+      },
+      "contextItems": [],
+      "editorState": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "name: Local Config"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "version: 1.0.0"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "schema: v1"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "models:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - id: explanation"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    name: Llama3"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    description: 'Use for explanations, summaries, and natural-language reasoning.'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    provider: ollama"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: llama3:latest"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    apiBase: http://127.0.0.1:11434"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - id: coding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    name: StarCoder2.3b"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    description: 'Use for code generation, edits, and developer tasks.'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    provider: ollama"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: starcoder2:3b"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    apiBase: http://127.0.0.1:11434"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "routes:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - match: '(explain|explanation|summary|summarize|describe|why|how)'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: explanation"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - match: '(code|implement|fix|refactor|patch|function|class|compile|error)'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: coding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "defaults:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  timeout_seconds: 120"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  max_tokens: 8192"
+              }
+            ]
+          }
+        ]
+      },
+      "appliedRules": []
+    },
+    {
+      "message": {
+        "id": "83175a73-596c-47e3-a8d0-b1e264aa0237",
+        "role": "assistant",
+        "content": "You're looking at your local config file! This is where you define the models, routes, and default settings for your AI-powered chatbot.\n\nI can see that you have two models defined: `explanation` (Llama3) and `coding` (StarCoder2.3b). The `routes` section defines how to route incoming requests to these models based on specific keywords or phrases.\n\nThe `defaults` section sets some general settings, such as the timeout in seconds and the maximum number of tokens allowed per request.\n\nIf you'd like to make changes to this file, I can offer that you use the Apply Button on the code block or switch to Agent Mode to make the suggested updates automatically."
+      },
+      "contextItems": [],
+      "promptLogs": [
+        {
+          "modelTitle": "Llama3",
+          "modelProvider": "ollama",
+          "prompt": "<system>\n<important_rules>\n  You are in chat mode.\n\n  If the user asks to make changes to files offer that they can use the Apply Button on the code block, or switch to Agent Mode to make the suggested updates automatically.\n  If needed concisely explain to the user they can switch to agent mode using the Mode Selector dropdown and provide no other details.\n\n  Always include the language and file name in the info string when you write code blocks.\n  If you are editing \"src/main.py\" for example, your code block should start with '```python src/main.py'\n\n  When addressing code modification requests, present a concise code snippet that\n  emphasizes only the necessary changes and uses abbreviated placeholders for\n  unmodified sections. For example:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  {{ modified code here }}\n\n  // ... existing code ...\n\n  {{ another modification }}\n\n  // ... rest of code ...\n  ```\n\n  In existing files, you should always restate the function or class that the snippet belongs to:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  function exampleFunction() {\n    // ... existing code ...\n\n    {{ modified code here }}\n\n    // ... rest of function ...\n  }\n\n  // ... rest of code ...\n  ```\n\n  Since users have access to their complete file, they prefer reading only the\n  relevant modifications. It's perfectly acceptable to omit unmodified portions\n  at the beginning, middle, or end of files using these \"lazy\" comments. Only\n  provide the complete file when explicitly requested. Include a concise explanation\n  of changes unless the user specifically asks for code only.\n\n</important_rules>\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n",
+          "completion": "<assistant>\nYou\n\n<assistant>\n're\n\n<assistant>\n looking\n\n<assistant>\n at\n\n<assistant>\n your\n\n<assistant>\n local\n\n<assistant>\n config\n\n<assistant>\n file\n\n<assistant>\n!\n\n<assistant>\n This\n\n<assistant>\n is\n\n<assistant>\n where\n\n<assistant>\n you\n\n<assistant>\n define\n\n<assistant>\n the\n\n<assistant>\n models\n\n<assistant>\n,\n\n<assistant>\n routes\n\n<assistant>\n,\n\n<assistant>\n and\n\n<assistant>\n default\n\n<assistant>\n settings\n\n<assistant>\n for\n\n<assistant>\n your\n\n<assistant>\n AI\n\n<assistant>\n-powered\n\n<assistant>\n chat\n\n<assistant>\nbot\n\n<assistant>\n.\n\n\n\n<assistant>\nI\n\n<assistant>\n can\n\n<assistant>\n see\n\n<assistant>\n that\n\n<assistant>\n you\n\n<assistant>\n have\n\n<assistant>\n two\n\n<assistant>\n models\n\n<assistant>\n defined\n\n<assistant>\n:\n\n<assistant>\n `\n\n<assistant>\nex\n\n<assistant>\nplanation\n\n<assistant>\n`\n\n<assistant>\n (\n\n<assistant>\nL\n\n<assistant>\nlama\n\n<assistant>\n3\n\n<assistant>\n)\n\n<assistant>\n and\n\n<assistant>\n `\n\n<assistant>\ncoding\n\n<assistant>\n`\n\n<assistant>\n (\n\n<assistant>\nStar\n\n<assistant>\nCoder\n\n<assistant>\n2\n\n<assistant>\n.\n\n<assistant>\n3\n\n<assistant>\nb\n\n<assistant>\n).\n\n<assistant>\n The\n\n<assistant>\n `\n\n<assistant>\nroutes\n\n<assistant>\n`\n\n<assistant>\n section\n\n<assistant>\n defines\n\n<assistant>\n how\n\n<assistant>\n to\n\n<assistant>\n route\n\n<assistant>\n incoming\n\n<assistant>\n requests\n\n<assistant>\n to\n\n<assistant>\n these\n\n<assistant>\n models\n\n<assistant>\n based\n\n<assistant>\n on\n\n<assistant>\n specific\n\n<assistant>\n keywords\n\n<assistant>\n or\n\n<assistant>\n phrases\n\n<assistant>\n.\n\n\n\n<assistant>\nThe\n\n<assistant>\n `\n\n<assistant>\ndefaults\n\n<assistant>\n`\n\n<assistant>\n section\n\n<assistant>\n sets\n\n<assistant>\n some\n\n<assistant>\n general\n\n<assistant>\n settings\n\n<assistant>\n,\n\n<assistant>\n such\n\n<assistant>\n as\n\n<assistant>\n the\n\n<assistant>\n timeout\n\n<assistant>\n in\n\n<assistant>\n seconds\n\n<assistant>\n and\n\n<assistant>\n the\n\n<assistant>\n maximum\n\n<assistant>\n number\n\n<assistant>\n of\n\n<assistant>\n tokens\n\n<assistant>\n allowed\n\n<assistant>\n per\n\n<assistant>\n request\n\n<assistant>\n.\n\n\n\n<assistant>\nIf\n\n<assistant>\n you\n\n<assistant>\n'd\n\n<assistant>\n like\n\n<assistant>\n to\n\n<assistant>\n make\n\n<assistant>\n changes\n\n<assistant>\n to\n\n<assistant>\n this\n\n<assistant>\n file\n\n<assistant>\n,\n\n<assistant>\n I\n\n<assistant>\n can\n\n<assistant>\n offer\n\n<assistant>\n that\n\n<assistant>\n you\n\n<assistant>\n use\n\n<assistant>\n the\n\n<assistant>\n Apply\n\n<assistant>\n Button\n\n<assistant>\n on\n\n<assistant>\n the\n\n<assistant>\n code\n\n<assistant>\n block\n\n<assistant>\n or\n\n<assistant>\n switch\n\n<assistant>\n to\n\n<assistant>\n Agent\n\n<assistant>\n Mode\n\n<assistant>\n to\n\n<assistant>\n make\n\n<assistant>\n the\n\n<assistant>\n suggested\n\n<assistant>\n updates\n\n<assistant>\n automatically\n\n<assistant>\n.\n\n<assistant>\n\n\n"
+        }
+      ],
+      "isGatheringContext": false
+    },
+    {
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "how to enable autocomplete"
+          }
+        ],
+        "id": "fb5187ac-9a4b-4712-a32b-7299a31ba875"
+      },
+      "contextItems": [],
+      "editorState": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "how to enable autocomplete"
+              }
+            ]
+          }
+        ]
+      },
+      "appliedRules": []
+    },
+    {
+      "message": {
+        "id": "291b82c5-fa42-439f-aee8-7444bf5c5e5f",
+        "role": "assistant",
+        "content": "Autocomplete! To enable autocomplete in your local config file, you'll need to add a specific route for it. Here's an example:\n\n```yaml\nroutes:\n- match: '(autocomplete|complete|suggest)'\n  model: coding\n```\n\nThis will create a new route that matches any requests containing the keywords \"autocomplete\", \"complete\", or \"suggest\". The `model: coding` part specifies that these routes should be handled by the `coding` model.\n\nOnce you add this route, you can trigger autocomplete suggestions in your chatbot by sending a request with one of those keywords. For example, if you type \"autocomplete \", the `coding` model will respond with a list of suggested completions based on the context and the code snippet being edited.\n\nNote that you might need to adjust the route pattern or add more routes depending on how you want autocomplete to work in your specific use case."
+      },
+      "contextItems": [],
+      "promptLogs": [
+        {
+          "modelTitle": "Llama3",
+          "modelProvider": "ollama",
+          "prompt": "<system>\n<important_rules>\n  You are in chat mode.\n\n  If the user asks to make changes to files offer that they can use the Apply Button on the code block, or switch to Agent Mode to make the suggested updates automatically.\n  If needed concisely explain to the user they can switch to agent mode using the Mode Selector dropdown and provide no other details.\n\n  Always include the language and file name in the info string when you write code blocks.\n  If you are editing \"src/main.py\" for example, your code block should start with '```python src/main.py'\n\n  When addressing code modification requests, present a concise code snippet that\n  emphasizes only the necessary changes and uses abbreviated placeholders for\n  unmodified sections. For example:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  {{ modified code here }}\n\n  // ... existing code ...\n\n  {{ another modification }}\n\n  // ... rest of code ...\n  ```\n\n  In existing files, you should always restate the function or class that the snippet belongs to:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  function exampleFunction() {\n    // ... existing code ...\n\n    {{ modified code here }}\n\n    // ... rest of function ...\n  }\n\n  // ... rest of code ...\n  ```\n\n  Since users have access to their complete file, they prefer reading only the\n  relevant modifications. It's perfectly acceptable to omit unmodified portions\n  at the beginning, middle, or end of files using these \"lazy\" comments. Only\n  provide the complete file when explicitly requested. Include a concise explanation\n  of changes unless the user specifically asks for code only.\n\n</important_rules>\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n<assistant>\nYou're looking at your local config file! This is where you define the models, routes, and default settings for your AI-powered chatbot.\n\nI can see that you have two models defined: `explanation` (Llama3) and `coding` (StarCoder2.3b). The `routes` section defines how to route incoming requests to these models based on specific keywords or phrases.\n\nThe `defaults` section sets some general settings, such as the timeout in seconds and the maximum number of tokens allowed per request.\n\nIf you'd like to make changes to this file, I can offer that you use the Apply Button on the code block or switch to Agent Mode to make the suggested updates automatically.\n\n<user>\nhow to enable autocomplete\n\n",
+          "completion": "<assistant>\nAut\n\n<assistant>\nocomplete\n\n<assistant>\n!\n\n<assistant>\n To\n\n<assistant>\n enable\n\n<assistant>\n autocomplete\n\n<assistant>\n in\n\n<assistant>\n your\n\n<assistant>\n local\n\n<assistant>\n config\n\n<assistant>\n file\n\n<assistant>\n,\n\n<assistant>\n you\n\n<assistant>\n'll\n\n<assistant>\n need\n\n<assistant>\n to\n\n<assistant>\n add\n\n<assistant>\n a\n\n<assistant>\n specific\n\n<assistant>\n route\n\n<assistant>\n for\n\n<assistant>\n it\n\n<assistant>\n.\n\n<assistant>\n Here\n\n<assistant>\n's\n\n<assistant>\n an\n\n<assistant>\n example\n\n<assistant>\n:\n\n\n\n<assistant>\n```\n\n<assistant>\nyaml\n\n<assistant>\n\n\n\n<assistant>\nroutes\n\n<assistant>\n:\n\n\n<assistant>\n-\n\n<assistant>\n match\n\n<assistant>\n:\n\n<assistant>\n '(\n\n<assistant>\nautocomplete\n\n<assistant>\n|\n\n<assistant>\ncomplete\n\n<assistant>\n|\n\n<assistant>\nsuggest\n\n<assistant>\n)'\n\n\n<assistant>\n \n\n<assistant>\n model\n\n<assistant>\n:\n\n<assistant>\n coding\n\n<assistant>\n\n\n\n<assistant>\n``\n\n<assistant>\n`\n\n\n\n<assistant>\nThis\n\n<assistant>\n will\n\n<assistant>\n create\n\n<assistant>\n a\n\n<assistant>\n new\n\n<assistant>\n route\n\n<assistant>\n that\n\n<assistant>\n matches\n\n<assistant>\n any\n\n<assistant>\n requests\n\n<assistant>\n containing\n\n<assistant>\n the\n\n<assistant>\n keywords\n\n<assistant>\n \"\n\n<assistant>\nautocomplete\n\n<assistant>\n\",\n\n<assistant>\n \"\n\n<assistant>\ncomplete\n\n<assistant>\n\",\n\n<assistant>\n or\n\n<assistant>\n \"\n\n<assistant>\nsuggest\n\n<assistant>\n\".\n\n<assistant>\n The\n\n<assistant>\n `\n\n<assistant>\nmodel\n\n<assistant>\n:\n\n<assistant>\n coding\n\n<assistant>\n`\n\n<assistant>\n part\n\n<assistant>\n specifies\n\n<assistant>\n that\n\n<assistant>\n these\n\n<assistant>\n routes\n\n<assistant>\n should\n\n<assistant>\n be\n\n<assistant>\n handled\n\n<assistant>\n by\n\n<assistant>\n the\n\n<assistant>\n `\n\n<assistant>\ncoding\n\n<assistant>\n`\n\n<assistant>\n model\n\n<assistant>\n.\n\n\n\n<assistant>\nOnce\n\n<assistant>\n you\n\n<assistant>\n add\n\n<assistant>\n this\n\n<assistant>\n route\n\n<assistant>\n,\n\n<assistant>\n you\n\n<assistant>\n can\n\n<assistant>\n trigger\n\n<assistant>\n autocomplete\n\n<assistant>\n suggestions\n\n<assistant>\n in\n\n<assistant>\n your\n\n<assistant>\n chat\n\n<assistant>\nbot\n\n<assistant>\n by\n\n<assistant>\n sending\n\n<assistant>\n a\n\n<assistant>\n request\n\n<assistant>\n with\n\n<assistant>\n one\n\n<assistant>\n of\n\n<assistant>\n those\n\n<assistant>\n keywords\n\n<assistant>\n.\n\n<assistant>\n For\n\n<assistant>\n example\n\n<assistant>\n,\n\n<assistant>\n if\n\n<assistant>\n you\n\n<assistant>\n type\n\n<assistant>\n \"\n\n<assistant>\nautocomplete\n\n<assistant>\n \",\n\n<assistant>\n the\n\n<assistant>\n `\n\n<assistant>\ncoding\n\n<assistant>\n`\n\n<assistant>\n model\n\n<assistant>\n will\n\n<assistant>\n respond\n\n<assistant>\n with\n\n<assistant>\n a\n\n<assistant>\n list\n\n<assistant>\n of\n\n<assistant>\n suggested\n\n<assistant>\n complet\n\n<assistant>\nions\n\n<assistant>\n based\n\n<assistant>\n on\n\n<assistant>\n the\n\n<assistant>\n context\n\n<assistant>\n and\n\n<assistant>\n the\n\n<assistant>\n code\n\n<assistant>\n snippet\n\n<assistant>\n being\n\n<assistant>\n edited\n\n<assistant>\n.\n\n\n\n<assistant>\nNote\n\n<assistant>\n that\n\n<assistant>\n you\n\n<assistant>\n might\n\n<assistant>\n need\n\n<assistant>\n to\n\n<assistant>\n adjust\n\n<assistant>\n the\n\n<assistant>\n route\n\n<assistant>\n pattern\n\n<assistant>\n or\n\n<assistant>\n add\n\n<assistant>\n more\n\n<assistant>\n routes\n\n<assistant>\n depending\n\n<assistant>\n on\n\n<assistant>\n how\n\n<assistant>\n you\n\n<assistant>\n want\n\n<assistant>\n autocomplete\n\n<assistant>\n to\n\n<assistant>\n work\n\n<assistant>\n in\n\n<assistant>\n your\n\n<assistant>\n specific\n\n<assistant>\n use\n\n<assistant>\n case\n\n<assistant>\n.\n\n<assistant>\n\n\n"
+        }
+      ],
+      "isGatheringContext": false
+    },
+    {
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "name: StarCoder2.3b"
+          }
+        ],
+        "id": "98736101-eb5c-4e64-a9ec-1c8d4997fa85"
+      },
+      "contextItems": [],
+      "editorState": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    name: StarCoder2.3b"
+              }
+            ]
+          }
+        ]
+      },
+      "appliedRules": []
+    },
+    {
+      "message": {
+        "id": "f02c936c-679b-400b-ae36-91b437c1c05d",
+        "role": "assistant",
+        "content": "You're interested in exploring the `StarCoder2.3b` model!\n\nAs the `coding` model, `StarCoder2.3b` is designed for code generation, edits, and developer tasks. It's a powerful tool for automating coding-related tasks, such as:\n\n* Code completion: Providing suggestions for completing code snippets\n* Code refactoring: Suggesting improvements to existing code\n* Code debugging: Helping identify and fix errors\n\nTo get started with `StarCoder2.3b`, you can try sending a request that triggers its capabilities. For example, if you're editing some Python code, you could type \"complete the function\" or \"fix this error\". The model will then respond with suggestions or code snippets to help you complete the task.\n\nKeep in mind that `StarCoder2.3b` is a language model designed for coding tasks, so it's best used in conjunction with your own programming skills and knowledge of the specific coding languages and technologies you're working with.\n\nIf you have any questions about how to use `StarCoder2.3b`, feel free to ask!"
+      },
+      "contextItems": [],
+      "promptLogs": [
+        {
+          "modelTitle": "Llama3",
+          "modelProvider": "ollama",
+          "prompt": "<system>\n<important_rules>\n  You are in chat mode.\n\n  If the user asks to make changes to files offer that they can use the Apply Button on the code block, or switch to Agent Mode to make the suggested updates automatically.\n  If needed concisely explain to the user they can switch to agent mode using the Mode Selector dropdown and provide no other details.\n\n  Always include the language and file name in the info string when you write code blocks.\n  If you are editing \"src/main.py\" for example, your code block should start with '```python src/main.py'\n\n  When addressing code modification requests, present a concise code snippet that\n  emphasizes only the necessary changes and uses abbreviated placeholders for\n  unmodified sections. For example:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  {{ modified code here }}\n\n  // ... existing code ...\n\n  {{ another modification }}\n\n  // ... rest of code ...\n  ```\n\n  In existing files, you should always restate the function or class that the snippet belongs to:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  function exampleFunction() {\n    // ... existing code ...\n\n    {{ modified code here }}\n\n    // ... rest of function ...\n  }\n\n  // ... rest of code ...\n  ```\n\n  Since users have access to their complete file, they prefer reading only the\n  relevant modifications. It's perfectly acceptable to omit unmodified portions\n  at the beginning, middle, or end of files using these \"lazy\" comments. Only\n  provide the complete file when explicitly requested. Include a concise explanation\n  of changes unless the user specifically asks for code only.\n\n</important_rules>\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n<assistant>\nYou're looking at your local config file! This is where you define the models, routes, and default settings for your AI-powered chatbot.\n\nI can see that you have two models defined: `explanation` (Llama3) and `coding` (StarCoder2.3b). The `routes` section defines how to route incoming requests to these models based on specific keywords or phrases.\n\nThe `defaults` section sets some general settings, such as the timeout in seconds and the maximum number of tokens allowed per request.\n\nIf you'd like to make changes to this file, I can offer that you use the Apply Button on the code block or switch to Agent Mode to make the suggested updates automatically.\n\n<user>\nhow to enable autocomplete\n\n<assistant>\nAutocomplete! To enable autocomplete in your local config file, you'll need to add a specific route for it. Here's an example:\n\n```yaml\nroutes:\n- match: '(autocomplete|complete|suggest)'\n  model: coding\n```\n\nThis will create a new route that matches any requests containing the keywords \"autocomplete\", \"complete\", or \"suggest\". The `model: coding` part specifies that these routes should be handled by the `coding` model.\n\nOnce you add this route, you can trigger autocomplete suggestions in your chatbot by sending a request with one of those keywords. For example, if you type \"autocomplete \", the `coding` model will respond with a list of suggested completions based on the context and the code snippet being edited.\n\nNote that you might need to adjust the route pattern or add more routes depending on how you want autocomplete to work in your specific use case.\n\n<user>\nname: StarCoder2.3b\n\n",
+          "completion": "<assistant>\nYou\n\n<assistant>\n're\n\n<assistant>\n interested\n\n<assistant>\n in\n\n<assistant>\n exploring\n\n<assistant>\n the\n\n<assistant>\n `\n\n<assistant>\nStar\n\n<assistant>\nCoder\n\n<assistant>\n2\n\n<assistant>\n.\n\n<assistant>\n3\n\n<assistant>\nb\n\n<assistant>\n`\n\n<assistant>\n model\n\n<assistant>\n!\n\n\n\n<assistant>\nAs\n\n<assistant>\n the\n\n<assistant>\n `\n\n<assistant>\ncoding\n\n<assistant>\n`\n\n<assistant>\n model\n\n<assistant>\n,\n\n<assistant>\n `\n\n<assistant>\nStar\n\n<assistant>\nCoder\n\n<assistant>\n2\n\n<assistant>\n.\n\n<assistant>\n3\n\n<assistant>\nb\n\n<assistant>\n`\n\n<assistant>\n is\n\n<assistant>\n designed\n\n<assistant>\n for\n\n<assistant>\n code\n\n<assistant>\n generation\n\n<assistant>\n,\n\n<assistant>\n edits\n\n<assistant>\n,\n\n<assistant>\n and\n\n<assistant>\n developer\n\n<assistant>\n tasks\n\n<assistant>\n.\n\n<assistant>\n It\n\n<assistant>\n's\n\n<assistant>\n a\n\n<assistant>\n powerful\n\n<assistant>\n tool\n\n<assistant>\n for\n\n<assistant>\n autom\n\n<assistant>\nating\n\n<assistant>\n coding\n\n<assistant>\n-related\n\n<assistant>\n tasks\n\n<assistant>\n,\n\n<assistant>\n such\n\n<assistant>\n as\n\n<assistant>\n:\n\n\n\n<assistant>\n*\n\n<assistant>\n Code\n\n<assistant>\n completion\n\n<assistant>\n:\n\n<assistant>\n Providing\n\n<assistant>\n suggestions\n\n<assistant>\n for\n\n<assistant>\n completing\n\n<assistant>\n code\n\n<assistant>\n snippets\n\n<assistant>\n\n\n\n<assistant>\n*\n\n<assistant>\n Code\n\n<assistant>\n ref\n\n<assistant>\nactoring\n\n<assistant>\n:\n\n<assistant>\n S\n\n<assistant>\nuggest\n\n<assistant>\ning\n\n<assistant>\n improvements\n\n<assistant>\n to\n\n<assistant>\n existing\n\n<assistant>\n code\n\n<assistant>\n\n\n\n<assistant>\n*\n\n<assistant>\n Code\n\n<assistant>\n debugging\n\n<assistant>\n:\n\n<assistant>\n Helping\n\n<assistant>\n identify\n\n<assistant>\n and\n\n<assistant>\n fix\n\n<assistant>\n errors\n\n<assistant>\n\n\n\n\n<assistant>\nTo\n\n<assistant>\n get\n\n<assistant>\n started\n\n<assistant>\n with\n\n<assistant>\n `\n\n<assistant>\nStar\n\n<assistant>\nCoder\n\n<assistant>\n2\n\n<assistant>\n.\n\n<assistant>\n3\n\n<assistant>\nb\n\n<assistant>\n`,\n\n<assistant>\n you\n\n<assistant>\n can\n\n<assistant>\n try\n\n<assistant>\n sending\n\n<assistant>\n a\n\n<assistant>\n request\n\n<assistant>\n that\n\n<assistant>\n triggers\n\n<assistant>\n its\n\n<assistant>\n capabilities\n\n<assistant>\n.\n\n<assistant>\n For\n\n<assistant>\n example\n\n<assistant>\n,\n\n<assistant>\n if\n\n<assistant>\n you\n\n<assistant>\n're\n\n<assistant>\n editing\n\n<assistant>\n some\n\n<assistant>\n Python\n\n<assistant>\n code\n\n<assistant>\n,\n\n<assistant>\n you\n\n<assistant>\n could\n\n<assistant>\n type\n\n<assistant>\n \"\n\n<assistant>\ncomplete\n\n<assistant>\n the\n\n<assistant>\n function\n\n<assistant>\n\"\n\n<assistant>\n or\n\n<assistant>\n \"\n\n<assistant>\nfix\n\n<assistant>\n this\n\n<assistant>\n error\n\n<assistant>\n\".\n\n<assistant>\n The\n\n<assistant>\n model\n\n<assistant>\n will\n\n<assistant>\n then\n\n<assistant>\n respond\n\n<assistant>\n with\n\n<assistant>\n suggestions\n\n<assistant>\n or\n\n<assistant>\n code\n\n<assistant>\n snippets\n\n<assistant>\n to\n\n<assistant>\n help\n\n<assistant>\n you\n\n<assistant>\n complete\n\n<assistant>\n the\n\n<assistant>\n task\n\n<assistant>\n.\n\n\n\n<assistant>\nKeep\n\n<assistant>\n in\n\n<assistant>\n mind\n\n<assistant>\n that\n\n<assistant>\n `\n\n<assistant>\nStar\n\n<assistant>\nCoder\n\n<assistant>\n2\n\n<assistant>\n.\n\n<assistant>\n3\n\n<assistant>\nb\n\n<assistant>\n`\n\n<assistant>\n is\n\n<assistant>\n a\n\n<assistant>\n language\n\n<assistant>\n model\n\n<assistant>\n designed\n\n<assistant>\n for\n\n<assistant>\n coding\n\n<assistant>\n tasks\n\n<assistant>\n,\n\n<assistant>\n so\n\n<assistant>\n it\n\n<assistant>\n's\n\n<assistant>\n best\n\n<assistant>\n used\n\n<assistant>\n in\n\n<assistant>\n conjunction\n\n<assistant>\n with\n\n<assistant>\n your\n\n<assistant>\n own\n\n<assistant>\n programming\n\n<assistant>\n skills\n\n<assistant>\n and\n\n<assistant>\n knowledge\n\n<assistant>\n of\n\n<assistant>\n the\n\n<assistant>\n specific\n\n<assistant>\n coding\n\n<assistant>\n languages\n\n<assistant>\n and\n\n<assistant>\n technologies\n\n<assistant>\n you\n\n<assistant>\n're\n\n<assistant>\n working\n\n<assistant>\n with\n\n<assistant>\n.\n\n\n\n<assistant>\nIf\n\n<assistant>\n you\n\n<assistant>\n have\n\n<assistant>\n any\n\n<assistant>\n questions\n\n<assistant>\n about\n\n<assistant>\n how\n\n<assistant>\n to\n\n<assistant>\n use\n\n<assistant>\n `\n\n<assistant>\nStar\n\n<assistant>\nCoder\n\n<assistant>\n2\n\n<assistant>\n.\n\n<assistant>\n3\n\n<assistant>\nb\n\n<assistant>\n`,\n\n<assistant>\n feel\n\n<assistant>\n free\n\n<assistant>\n to\n\n<assistant>\n ask\n\n<assistant>\n!\n\n<assistant>\n\n\n"
+        }
+      ],
+      "isGatheringContext": false
+    },
+    {
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "import os\nimport sys\nimport types\nfrom autolearnpro_agent_server.self_check import run_self_check\ndef test_missing_model_path_sets_error(monkeypatch):\nmonkeypatch.setenv('MODEL_PATH', '/this/path/does/not/exist')\nres = run_self_check()\nassert not res.ok\nassert any('Model path does not exist' in e for e in res.errors)\ndef test_cuda_unavailable_reports_warning(monkeypatch):\n# Inject a fake torch module with cuda.is_available -> False\nfake_torch = types.SimpleNamespace()\nfake_torch.cuda = types.SimpleNamespace()\nfake_torch.cuda.is_available = lambda: False\nmonkeypatch.setitem(sys.modules, 'torch', fake_torch)\n# Clear model/env to avoid unrelated errors\nmonkeypatch.delenv('MODEL_PATH', raising=False)\nmonkeypatch.delenv('MODEL_DIR', raising=False)\nmonkeypatch.delenv('OLLAMA_MODEL', raising=False)\nres = run_self_check()\n# Should not be fatal; expect a warning about CUDA available False\nassert res.ok or any('CUDA available' in w for w in res.warnings)\ndef test_sharded_pytorch_detection(tmp_path, monkeypatch):\n# Create fake model dir with sharded pytorch files\nd = tmp_path / 'modeldir'\nd.mkdir()\n(d / 'pytorch_model-00001-of-00002.bin').write_text('x')\n(d / 'pytorch_model-00002-of-00002.bin').write_text('x')\nmonkeypatch.setenv('MODEL_PATH', str(d))\n# Clear any AGENT_MIN_VRAM settings\nmonkeypatch.delenv('AGENT_MIN_VRAM_GB', raising=False)\nres = run_self_check()\nassert res.ok\nassert any('pytorch (sharded)' in w for w in res.warnings)\ndef test_safetensors_index_detection(tmp_path, monkeypatch):\nd = tmp_path / 'modeldir2'\nd.mkdir()\n(d / 'model.safetensors.index.json').write_text('{}')\nmonkeypatch.setenv('MODEL_PATH', str(d))\nres = run_self_check()\nassert res.ok\nassert any('safetensors (sharded' in w for w in res.warnings)\ndef test_min_vram_enforce(monkeypatch):\n# Mock torch with low VRAM\nimport types, sys\nclass Props:\ndef __init__(self, total_memory):\nself.total_memory = total_memory\nfake_torch = types.SimpleNamespace()\nfake_torch.cuda = types.SimpleNamespace()\nfake_torch.cuda.is_available = lambda: True\nfake_torch.cuda.get_device_properties = lambda i: Props(total_memory=int(4 * 1024 ** 3))\nmonkeypatch.setitem(sys.modules, 'torch', fake_torch)\nmonkeypatch.setenv('AGENT_MIN_VRAM_GB', '6')\nmonkeypatch.setenv('AGENT_ENFORCE_VRAM', '1')\n# Ensure model path absent to avoid unrelated errors\nmonkeypatch.delenv('MODEL_PATH', raising=False)\nmonkeypatch.delenv('MODEL_DIR', raising=False)\nmonkeypatch.delenv('OLLAMA_MODEL', raising=False)\nres = run_self_check()\nassert not res.ok\nassert any('below requested minimum' in e for e in res.errors)"
+          }
+        ],
+        "id": "80983df4-b9f8-4315-8436-c92fe6f700be"
+      },
+      "contextItems": [],
+      "editorState": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "import os"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "import sys"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "import types"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "from autolearnpro_agent_server.self_check import run_self_check"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "def test_missing_model_path_sets_error(monkeypatch):"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.setenv('MODEL_PATH', '/this/path/does/not/exist')"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    res = run_self_check()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    assert not res.ok"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    assert any('Model path does not exist' in e for e in res.errors)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "def test_cuda_unavailable_reports_warning(monkeypatch):"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    # Inject a fake torch module with cuda.is_available -> False"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    fake_torch = types.SimpleNamespace()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    fake_torch.cuda = types.SimpleNamespace()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    fake_torch.cuda.is_available = lambda: False"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.setitem(sys.modules, 'torch', fake_torch)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    # Clear model/env to avoid unrelated errors"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.delenv('MODEL_PATH', raising=False)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.delenv('MODEL_DIR', raising=False)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.delenv('OLLAMA_MODEL', raising=False)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    res = run_self_check()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    # Should not be fatal; expect a warning about CUDA available False"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    assert res.ok or any('CUDA available' in w for w in res.warnings)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "def test_sharded_pytorch_detection(tmp_path, monkeypatch):"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    # Create fake model dir with sharded pytorch files"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    d = tmp_path / 'modeldir'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    d.mkdir()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    (d / 'pytorch_model-00001-of-00002.bin').write_text('x')"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    (d / 'pytorch_model-00002-of-00002.bin').write_text('x')"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.setenv('MODEL_PATH', str(d))"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    # Clear any AGENT_MIN_VRAM settings"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.delenv('AGENT_MIN_VRAM_GB', raising=False)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    res = run_self_check()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    assert res.ok"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    assert any('pytorch (sharded)' in w for w in res.warnings)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "def test_safetensors_index_detection(tmp_path, monkeypatch):"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    d = tmp_path / 'modeldir2'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    d.mkdir()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    (d / 'model.safetensors.index.json').write_text('{}')"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.setenv('MODEL_PATH', str(d))"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    res = run_self_check()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    assert res.ok"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    assert any('safetensors (sharded' in w for w in res.warnings)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "def test_min_vram_enforce(monkeypatch):"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    # Mock torch with low VRAM"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    import types, sys"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    class Props:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "        def __init__(self, total_memory):"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "            self.total_memory = total_memory"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    fake_torch = types.SimpleNamespace()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    fake_torch.cuda = types.SimpleNamespace()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    fake_torch.cuda.is_available = lambda: True"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    fake_torch.cuda.get_device_properties = lambda i: Props(total_memory=int(4 * 1024 ** 3))"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.setitem(sys.modules, 'torch', fake_torch)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.setenv('AGENT_MIN_VRAM_GB', '6')"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.setenv('AGENT_ENFORCE_VRAM', '1')"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    # Ensure model path absent to avoid unrelated errors"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.delenv('MODEL_PATH', raising=False)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.delenv('MODEL_DIR', raising=False)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    monkeypatch.delenv('OLLAMA_MODEL', raising=False)"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    res = run_self_check()"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    assert not res.ok"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    assert any('below requested minimum' in e for e in res.errors)"
+              }
+            ]
+          }
+        ]
+      },
+      "appliedRules": []
+    },
+    {
+      "message": {
+        "id": "e25d4db7-8a86-4ab8-a127-dd32c484e182",
+        "role": "assistant",
+        "content": "You're looking at the Self-Check report! This tool is designed to provide information about your AI-powered chatbot and its underlying models, including information such as:\n\n* Whether the model is running on GPU/TPU hardware and how much VRAM it requires\n* Whether the model's backend (PyTorch or TensorFlow) is installed correctly\n* Any other issues that may be preventing the model from working properly\n\nThe self-check tool can also detect common problems with your AI-powered chatbot configuration. For example, if the agent is configured to run on CPU but the model was trained for GPU/TPU hardware, it will likely encounter an error.\n\nKeep in mind that the self-check tool does not verify the safety or security of the AI-powered chatbot itself. It's best used as a guideline for troubleshooting issues and evaluating the overall quality of your chatbot deployment."
+      },
+      "contextItems": [],
+      "promptLogs": [
+        {
+          "modelTitle": "StarCoder2.3b",
+          "modelProvider": "ollama",
+          "prompt": "<system>\n<important_rules>\n  You are in chat mode.\n\n  If the user asks to make changes to files offer that they can use the Apply Button on the code block, or switch to Agent Mode to make the suggested updates automatically.\n  If needed concisely explain to the user they can switch to agent mode using the Mode Selector dropdown and provide no other details.\n\n  Always include the language and file name in the info string when you write code blocks.\n  If you are editing \"src/main.py\" for example, your code block should start with '```python src/main.py'\n\n  When addressing code modification requests, present a concise code snippet that\n  emphasizes only the necessary changes and uses abbreviated placeholders for\n  unmodified sections. For example:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  {{ modified code here }}\n\n  // ... existing code ...\n\n  {{ another modification }}\n\n  // ... rest of code ...\n  ```\n\n  In existing files, you should always restate the function or class that the snippet belongs to:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  function exampleFunction() {\n    // ... existing code ...\n\n    {{ modified code here }}\n\n    // ... rest of function ...\n  }\n\n  // ... rest of code ...\n  ```\n\n  Since users have access to their complete file, they prefer reading only the\n  relevant modifications. It's perfectly acceptable to omit unmodified portions\n  at the beginning, middle, or end of files using these \"lazy\" comments. Only\n  provide the complete file when explicitly requested. Include a concise explanation\n  of changes unless the user specifically asks for code only.\n\n</important_rules>\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n<assistant>\nYou're looking at your local config file! This is where you define the models, routes, and default settings for your AI-powered chatbot.\n\nI can see that you have two models defined: `explanation` (Llama3) and `coding` (StarCoder2.3b). The `routes` section defines how to route incoming requests to these models based on specific keywords or phrases.\n\nThe `defaults` section sets some general settings, such as the timeout in seconds and the maximum number of tokens allowed per request.\n\nIf you'd like to make changes to this file, I can offer that you use the Apply Button on the code block or switch to Agent Mode to make the suggested updates automatically.\n\n<user>\nhow to enable autocomplete\n\n<assistant>\nAutocomplete! To enable autocomplete in your local config file, you'll need to add a specific route for it. Here's an example:\n\n```yaml\nroutes:\n- match: '(autocomplete|complete|suggest)'\n  model: coding\n```\n\nThis will create a new route that matches any requests containing the keywords \"autocomplete\", \"complete\", or \"suggest\". The `model: coding` part specifies that these routes should be handled by the `coding` model.\n\nOnce you add this route, you can trigger autocomplete suggestions in your chatbot by sending a request with one of those keywords. For example, if you type \"autocomplete \", the `coding` model will respond with a list of suggested completions based on the context and the code snippet being edited.\n\nNote that you might need to adjust the route pattern or add more routes depending on how you want autocomplete to work in your specific use case.\n\n<user>\nname: StarCoder2.3b\n\n<assistant>\nYou're interested in exploring the `StarCoder2.3b` model!\n\nAs the `coding` model, `StarCoder2.3b` is designed for code generation, edits, and developer tasks. It's a powerful tool for automating coding-related tasks, such as:\n\n* Code completion: Providing suggestions for completing code snippets\n* Code refactoring: Suggesting improvements to existing code\n* Code debugging: Helping identify and fix errors\n\nTo get started with `StarCoder2.3b`, you can try sending a request that triggers its capabilities. For example, if you're editing some Python code, you could type \"complete the function\" or \"fix this error\". The model will then respond with suggestions or code snippets to help you complete the task.\n\nKeep in mind that `StarCoder2.3b` is a language model designed for coding tasks, so it's best used in conjunction with your own programming skills and knowledge of the specific coding languages and technologies you're working with.\n\nIf you have any questions about how to use `StarCoder2.3b`, feel free to ask!\n\n<user>\nimport os\nimport sys\nimport types\nfrom autolearnpro_agent_server.self_check import run_self_check\ndef test_missing_model_path_sets_error(monkeypatch):\nmonkeypatch.setenv('MODEL_PATH', '/this/path/does/not/exist')\nres = run_self_check()\nassert not res.ok\nassert any('Model path does not exist' in e for e in res.errors)\ndef test_cuda_unavailable_reports_warning(monkeypatch):\n# Inject a fake torch module with cuda.is_available -> False\nfake_torch = types.SimpleNamespace()\nfake_torch.cuda = types.SimpleNamespace()\nfake_torch.cuda.is_available = lambda: False\nmonkeypatch.setitem(sys.modules, 'torch', fake_torch)\n# Clear model/env to avoid unrelated errors\nmonkeypatch.delenv('MODEL_PATH', raising=False)\nmonkeypatch.delenv('MODEL_DIR', raising=False)\nmonkeypatch.delenv('OLLAMA_MODEL', raising=False)\nres = run_self_check()\n# Should not be fatal; expect a warning about CUDA available False\nassert res.ok or any('CUDA available' in w for w in res.warnings)\ndef test_sharded_pytorch_detection(tmp_path, monkeypatch):\n# Create fake model dir with sharded pytorch files\nd = tmp_path / 'modeldir'\nd.mkdir()\n(d / 'pytorch_model-00001-of-00002.bin').write_text('x')\n(d / 'pytorch_model-00002-of-00002.bin').write_text('x')\nmonkeypatch.setenv('MODEL_PATH', str(d))\n# Clear any AGENT_MIN_VRAM settings\nmonkeypatch.delenv('AGENT_MIN_VRAM_GB', raising=False)\nres = run_self_check()\nassert res.ok\nassert any('pytorch (sharded)' in w for w in res.warnings)\ndef test_safetensors_index_detection(tmp_path, monkeypatch):\nd = tmp_path / 'modeldir2'\nd.mkdir()\n(d / 'model.safetensors.index.json').write_text('{}')\nmonkeypatch.setenv('MODEL_PATH', str(d))\nres = run_self_check()\nassert res.ok\nassert any('safetensors (sharded' in w for w in res.warnings)\ndef test_min_vram_enforce(monkeypatch):\n# Mock torch with low VRAM\nimport types, sys\nclass Props:\ndef __init__(self, total_memory):\nself.total_memory = total_memory\nfake_torch = types.SimpleNamespace()\nfake_torch.cuda = types.SimpleNamespace()\nfake_torch.cuda.is_available = lambda: True\nfake_torch.cuda.get_device_properties = lambda i: Props(total_memory=int(4 * 1024 ** 3))\nmonkeypatch.setitem(sys.modules, 'torch', fake_torch)\nmonkeypatch.setenv('AGENT_MIN_VRAM_GB', '6')\nmonkeypatch.setenv('AGENT_ENFORCE_VRAM', '1')\n# Ensure model path absent to avoid unrelated errors\nmonkeypatch.delenv('MODEL_PATH', raising=False)\nmonkeypatch.delenv('MODEL_DIR', raising=False)\nmonkeypatch.delenv('OLLAMA_MODEL', raising=False)\nres = run_self_check()\nassert not res.ok\nassert any('below requested minimum' in e for e in res.errors)\n\n",
+          "completion": "<assistant>\nYou\n\n<assistant>\n'\n\n<assistant>\nre\n\n<assistant>\n looking\n\n<assistant>\n at\n\n<assistant>\n the\n\n<assistant>\n Self\n\n<assistant>\n-\n\n<assistant>\nCheck\n\n<assistant>\n report\n\n<assistant>\n!\n\n<assistant>\n This\n\n<assistant>\n tool\n\n<assistant>\n is\n\n<assistant>\n designed\n\n<assistant>\n to\n\n<assistant>\n provide\n\n<assistant>\n information\n\n<assistant>\n about\n\n<assistant>\n your\n\n<assistant>\n AI\n\n<assistant>\n-\n\n<assistant>\npowered\n\n<assistant>\n chat\n\n<assistant>\nbot\n\n<assistant>\n and\n\n<assistant>\n its\n\n<assistant>\n underlying\n\n<assistant>\n models\n\n<assistant>\n,\n\n<assistant>\n including\n\n<assistant>\n information\n\n<assistant>\n such\n\n<assistant>\n as\n\n<assistant>\n:\n\n<assistant>\n\n\n\n<assistant>\n\n\n\n<assistant>\n*\n\n<assistant>\n Whether\n\n<assistant>\n the\n\n<assistant>\n model\n\n<assistant>\n is\n\n<assistant>\n running\n\n<assistant>\n on\n\n<assistant>\n GPU\n\n<assistant>\n/\n\n<assistant>\nTP\n\n<assistant>\nU\n\n<assistant>\n hardware\n\n<assistant>\n and\n\n<assistant>\n how\n\n<assistant>\n much\n\n<assistant>\n VR\n\n<assistant>\nAM\n\n<assistant>\n it\n\n<assistant>\n requires\n\n<assistant>\n\n\n\n<assistant>\n*\n\n<assistant>\n Whether\n\n<assistant>\n the\n\n<assistant>\n model\n\n<assistant>\n's\n\n<assistant>\n backend\n\n<assistant>\n (\n\n<assistant>\nPy\n\n<assistant>\nTorch\n\n<assistant>\n or\n\n<assistant>\n TensorFlow\n\n<assistant>\n)\n\n<assistant>\n is\n\n<assistant>\n installed\n\n<assistant>\n correctly\n\n<assistant>\n\n\n\n<assistant>\n*\n\n<assistant>\n Any\n\n<assistant>\n other\n\n<assistant>\n issues\n\n<assistant>\n that\n\n<assistant>\n may\n\n<assistant>\n be\n\n<assistant>\n prevent\n\n<assistant>\ning\n\n<assistant>\n the\n\n<assistant>\n model\n\n<assistant>\n from\n\n<assistant>\n working\n\n<assistant>\n properly\n\n<assistant>\n\n\n\n<assistant>\n\n\n\n<assistant>\nThe\n\n<assistant>\n self\n\n<assistant>\n-\n\n<assistant>\ncheck\n\n<assistant>\n tool\n\n<assistant>\n can\n\n<assistant>\n also\n\n<assistant>\n detect\n\n<assistant>\n common\n\n<assistant>\n problems\n\n<assistant>\n with\n\n<assistant>\n your\n\n<assistant>\n AI\n\n<assistant>\n-\n\n<assistant>\npowered\n\n<assistant>\n chat\n\n<assistant>\nbot\n\n<assistant>\n configuration\n\n<assistant>\n.\n\n<assistant>\n For\n\n<assistant>\n example\n\n<assistant>\n,\n\n<assistant>\n if\n\n<assistant>\n the\n\n<assistant>\n agent\n\n<assistant>\n is\n\n<assistant>\n configured\n\n<assistant>\n to\n\n<assistant>\n run\n\n<assistant>\n on\n\n<assistant>\n CPU\n\n<assistant>\n but\n\n<assistant>\n the\n\n<assistant>\n model\n\n<assistant>\n was\n\n<assistant>\n trained\n\n<assistant>\n for\n\n<assistant>\n GPU\n\n<assistant>\n/\n\n<assistant>\nTP\n\n<assistant>\nU\n\n<assistant>\n hardware\n\n<assistant>\n,\n\n<assistant>\n it\n\n<assistant>\n will\n\n<assistant>\n likely\n\n<assistant>\n encounter\n\n<assistant>\n an\n\n<assistant>\n error\n\n<assistant>\n.\n\n<assistant>\n\n\n\n<assistant>\n\n\n\n<assistant>\nKeep\n\n<assistant>\n in\n\n<assistant>\n mind\n\n<assistant>\n that\n\n<assistant>\n the\n\n<assistant>\n self\n\n<assistant>\n-\n\n<assistant>\ncheck\n\n<assistant>\n tool\n\n<assistant>\n does\n\n<assistant>\n not\n\n<assistant>\n verify\n\n<assistant>\n the\n\n<assistant>\n safety\n\n<assistant>\n or\n\n<assistant>\n security\n\n<assistant>\n of\n\n<assistant>\n the\n\n<assistant>\n AI\n\n<assistant>\n-\n\n<assistant>\npowered\n\n<assistant>\n chat\n\n<assistant>\nbot\n\n<assistant>\n itself\n\n<assistant>\n.\n\n<assistant>\n It\n\n<assistant>\n's\n\n<assistant>\n best\n\n<assistant>\n used\n\n<assistant>\n as\n\n<assistant>\n a\n\n<assistant>\n guide\n\n<assistant>\nline\n\n<assistant>\n for\n\n<assistant>\n tro\n\n<assistant>\nubleshooting\n\n<assistant>\n issues\n\n<assistant>\n and\n\n<assistant>\n evaluating\n\n<assistant>\n the\n\n<assistant>\n overall\n\n<assistant>\n quality\n\n<assistant>\n of\n\n<assistant>\n your\n\n<assistant>\n chat\n\n<assistant>\nbot\n\n<assistant>\n deployment\n\n<assistant>\n.\n\n<assistant>\n\n\n"
+        }
+      ],
+      "isGatheringContext": false
+    },
+    {
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "name: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: 'http://localhost:11434'\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: 'http://localhost:11434'\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\n- match: '(autocomplete|complete|suggest)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192"
+          }
+        ],
+        "id": "c8cfdfa2-c4f3-410d-b362-0e13d8eec1e6"
+      },
+      "contextItems": [],
+      "editorState": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "name: Local Config"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "version: 1.0.0"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "schema: v1"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "models:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - id: explanation"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    name: Llama3"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    description: 'Use for explanations, summaries, and natural-language reasoning.'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    provider: ollama"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: llama3:latest"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    apiBase: 'http://localhost:11434'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - id: coding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    name: StarCoder2.3b"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    description: 'Use for code generation, edits, and developer tasks.'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    provider: ollama"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: starcoder2:3b"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    apiBase: 'http://localhost:11434'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "routes:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - match: '(explain|explanation|summary|summarize|describe|why|how)'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: explanation"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - match: '(code|implement|fix|refactor|patch|function|class|compile|error)'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: coding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  - match: '(autocomplete|complete|suggest)'"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "    model: coding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "defaults:"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  timeout_seconds: 120"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "  max_tokens: 8192"
+              }
+            ]
+          }
+        ]
+      },
+      "appliedRules": []
+    },
+    {
+      "message": {
+        "id": "76bac927-37e3-42e5-9d34-d9d55929e311",
+        "role": "assistant",
+        "content": "You're looking at your local config file! This is where you define the models, routes, and default settings for your AI-powered chatbot.\n\nI can see that you have two models defined: `explanation` (Llama3) and `coding` (StarCoder2.3b). The `routes` section defines how to route incoming requests to these models based on specific keywords or phrases.\n\nThe `defaults` section sets some general settings, such as the timeout in seconds and the maximum number of tokens allowed per request.\n\nIf you'd like to make changes to this file, I can offer that you use the Apply Button on the code block or switch to Agent Mode to make the suggested updates automatically."
+      },
+      "contextItems": [],
+      "promptLogs": [
+        {
+          "modelTitle": "StarCoder2.3b",
+          "modelProvider": "ollama",
+          "prompt": "<system>\n<important_rules>\n  You are in chat mode.\n\n  If the user asks to make changes to files offer that they can use the Apply Button on the code block, or switch to Agent Mode to make the suggested updates automatically.\n  If needed concisely explain to the user they can switch to agent mode using the Mode Selector dropdown and provide no other details.\n\n  Always include the language and file name in the info string when you write code blocks.\n  If you are editing \"src/main.py\" for example, your code block should start with '```python src/main.py'\n\n  When addressing code modification requests, present a concise code snippet that\n  emphasizes only the necessary changes and uses abbreviated placeholders for\n  unmodified sections. For example:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  {{ modified code here }}\n\n  // ... existing code ...\n\n  {{ another modification }}\n\n  // ... rest of code ...\n  ```\n\n  In existing files, you should always restate the function or class that the snippet belongs to:\n\n  ```language /path/to/file\n  // ... existing code ...\n\n  function exampleFunction() {\n    // ... existing code ...\n\n    {{ modified code here }}\n\n    // ... rest of function ...\n  }\n\n  // ... rest of code ...\n  ```\n\n  Since users have access to their complete file, they prefer reading only the\n  relevant modifications. It's perfectly acceptable to omit unmodified portions\n  at the beginning, middle, or end of files using these \"lazy\" comments. Only\n  provide the complete file when explicitly requested. Include a concise explanation\n  of changes unless the user specifically asks for code only.\n\n</important_rules>\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: http://127.0.0.1:11434\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: http://127.0.0.1:11434\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n<assistant>\nYou're looking at your local config file! This is where you define the models, routes, and default settings for your AI-powered chatbot.\n\nI can see that you have two models defined: `explanation` (Llama3) and `coding` (StarCoder2.3b). The `routes` section defines how to route incoming requests to these models based on specific keywords or phrases.\n\nThe `defaults` section sets some general settings, such as the timeout in seconds and the maximum number of tokens allowed per request.\n\nIf you'd like to make changes to this file, I can offer that you use the Apply Button on the code block or switch to Agent Mode to make the suggested updates automatically.\n\n<user>\nhow to enable autocomplete\n\n<assistant>\nAutocomplete! To enable autocomplete in your local config file, you'll need to add a specific route for it. Here's an example:\n\n```yaml\nroutes:\n- match: '(autocomplete|complete|suggest)'\n  model: coding\n```\n\nThis will create a new route that matches any requests containing the keywords \"autocomplete\", \"complete\", or \"suggest\". The `model: coding` part specifies that these routes should be handled by the `coding` model.\n\nOnce you add this route, you can trigger autocomplete suggestions in your chatbot by sending a request with one of those keywords. For example, if you type \"autocomplete \", the `coding` model will respond with a list of suggested completions based on the context and the code snippet being edited.\n\nNote that you might need to adjust the route pattern or add more routes depending on how you want autocomplete to work in your specific use case.\n\n<user>\nname: StarCoder2.3b\n\n<assistant>\nYou're interested in exploring the `StarCoder2.3b` model!\n\nAs the `coding` model, `StarCoder2.3b` is designed for code generation, edits, and developer tasks. It's a powerful tool for automating coding-related tasks, such as:\n\n* Code completion: Providing suggestions for completing code snippets\n* Code refactoring: Suggesting improvements to existing code\n* Code debugging: Helping identify and fix errors\n\nTo get started with `StarCoder2.3b`, you can try sending a request that triggers its capabilities. For example, if you're editing some Python code, you could type \"complete the function\" or \"fix this error\". The model will then respond with suggestions or code snippets to help you complete the task.\n\nKeep in mind that `StarCoder2.3b` is a language model designed for coding tasks, so it's best used in conjunction with your own programming skills and knowledge of the specific coding languages and technologies you're working with.\n\nIf you have any questions about how to use `StarCoder2.3b`, feel free to ask!\n\n<user>\nimport os\nimport sys\nimport types\nfrom autolearnpro_agent_server.self_check import run_self_check\ndef test_missing_model_path_sets_error(monkeypatch):\nmonkeypatch.setenv('MODEL_PATH', '/this/path/does/not/exist')\nres = run_self_check()\nassert not res.ok\nassert any('Model path does not exist' in e for e in res.errors)\ndef test_cuda_unavailable_reports_warning(monkeypatch):\n# Inject a fake torch module with cuda.is_available -> False\nfake_torch = types.SimpleNamespace()\nfake_torch.cuda = types.SimpleNamespace()\nfake_torch.cuda.is_available = lambda: False\nmonkeypatch.setitem(sys.modules, 'torch', fake_torch)\n# Clear model/env to avoid unrelated errors\nmonkeypatch.delenv('MODEL_PATH', raising=False)\nmonkeypatch.delenv('MODEL_DIR', raising=False)\nmonkeypatch.delenv('OLLAMA_MODEL', raising=False)\nres = run_self_check()\n# Should not be fatal; expect a warning about CUDA available False\nassert res.ok or any('CUDA available' in w for w in res.warnings)\ndef test_sharded_pytorch_detection(tmp_path, monkeypatch):\n# Create fake model dir with sharded pytorch files\nd = tmp_path / 'modeldir'\nd.mkdir()\n(d / 'pytorch_model-00001-of-00002.bin').write_text('x')\n(d / 'pytorch_model-00002-of-00002.bin').write_text('x')\nmonkeypatch.setenv('MODEL_PATH', str(d))\n# Clear any AGENT_MIN_VRAM settings\nmonkeypatch.delenv('AGENT_MIN_VRAM_GB', raising=False)\nres = run_self_check()\nassert res.ok\nassert any('pytorch (sharded)' in w for w in res.warnings)\ndef test_safetensors_index_detection(tmp_path, monkeypatch):\nd = tmp_path / 'modeldir2'\nd.mkdir()\n(d / 'model.safetensors.index.json').write_text('{}')\nmonkeypatch.setenv('MODEL_PATH', str(d))\nres = run_self_check()\nassert res.ok\nassert any('safetensors (sharded' in w for w in res.warnings)\ndef test_min_vram_enforce(monkeypatch):\n# Mock torch with low VRAM\nimport types, sys\nclass Props:\ndef __init__(self, total_memory):\nself.total_memory = total_memory\nfake_torch = types.SimpleNamespace()\nfake_torch.cuda = types.SimpleNamespace()\nfake_torch.cuda.is_available = lambda: True\nfake_torch.cuda.get_device_properties = lambda i: Props(total_memory=int(4 * 1024 ** 3))\nmonkeypatch.setitem(sys.modules, 'torch', fake_torch)\nmonkeypatch.setenv('AGENT_MIN_VRAM_GB', '6')\nmonkeypatch.setenv('AGENT_ENFORCE_VRAM', '1')\n# Ensure model path absent to avoid unrelated errors\nmonkeypatch.delenv('MODEL_PATH', raising=False)\nmonkeypatch.delenv('MODEL_DIR', raising=False)\nmonkeypatch.delenv('OLLAMA_MODEL', raising=False)\nres = run_self_check()\nassert not res.ok\nassert any('below requested minimum' in e for e in res.errors)\n\n<assistant>\nYou're looking at the Self-Check report! This tool is designed to provide information about your AI-powered chatbot and its underlying models, including information such as:\n\n* Whether the model is running on GPU/TPU hardware and how much VRAM it requires\n* Whether the model's backend (PyTorch or TensorFlow) is installed correctly\n* Any other issues that may be preventing the model from working properly\n\nThe self-check tool can also detect common problems with your AI-powered chatbot configuration. For example, if the agent is configured to run on CPU but the model was trained for GPU/TPU hardware, it will likely encounter an error.\n\nKeep in mind that the self-check tool does not verify the safety or security of the AI-powered chatbot itself. It's best used as a guideline for troubleshooting issues and evaluating the overall quality of your chatbot deployment.\n\n<user>\nname: Local Config\nversion: 1.0.0\nschema: v1\nmodels:\n- id: explanation\nname: Llama3\ndescription: 'Use for explanations, summaries, and natural-language reasoning.'\nprovider: ollama\nmodel: llama3:latest\napiBase: 'http://localhost:11434'\n- id: coding\nname: StarCoder2.3b\ndescription: 'Use for code generation, edits, and developer tasks.'\nprovider: ollama\nmodel: starcoder2:3b\napiBase: 'http://localhost:11434'\nroutes:\n- match: '(explain|explanation|summary|summarize|describe|why|how)'\nmodel: explanation\n- match: '(code|implement|fix|refactor|patch|function|class|compile|error)'\nmodel: coding\n- match: '(autocomplete|complete|suggest)'\nmodel: coding\ndefaults:\ntimeout_seconds: 120\nmax_tokens: 8192\n\n",
+          "completion": "<assistant>\nYou\n\n<assistant>\n'\n\n<assistant>\nre\n\n<assistant>\n looking\n\n<assistant>\n at\n\n<assistant>\n your\n\n<assistant>\n local\n\n<assistant>\n config\n\n<assistant>\n file\n\n<assistant>\n!\n\n<assistant>\n This\n\n<assistant>\n is\n\n<assistant>\n where\n\n<assistant>\n you\n\n<assistant>\n define\n\n<assistant>\n the\n\n<assistant>\n models\n\n<assistant>\n,\n\n<assistant>\n routes\n\n<assistant>\n,\n\n<assistant>\n and\n\n<assistant>\n default\n\n<assistant>\n settings\n\n<assistant>\n for\n\n<assistant>\n your\n\n<assistant>\n AI\n\n<assistant>\n-\n\n<assistant>\npowered\n\n<assistant>\n chat\n\n<assistant>\nbot\n\n<assistant>\n.\n\n<assistant>\n\n\n\n<assistant>\n\n\n\n<assistant>\nI\n\n<assistant>\n can\n\n<assistant>\n see\n\n<assistant>\n that\n\n<assistant>\n you\n\n<assistant>\n have\n\n<assistant>\n two\n\n<assistant>\n models\n\n<assistant>\n defined\n\n<assistant>\n:\n\n<assistant>\n `\n\n<assistant>\nexplanation\n\n<assistant>\n`\n\n<assistant>\n (\n\n<assistant>\nL\n\n<assistant>\nlama\n\n<assistant>\n3\n\n<assistant>\n)\n\n<assistant>\n and\n\n<assistant>\n `\n\n<assistant>\ncoding\n\n<assistant>\n`\n\n<assistant>\n (\n\n<assistant>\nStar\n\n<assistant>\nCoder\n\n<assistant>\n2\n\n<assistant>\n.\n\n<assistant>\n3\n\n<assistant>\nb\n\n<assistant>\n).\n\n<assistant>\n The\n\n<assistant>\n `\n\n<assistant>\nroutes\n\n<assistant>\n`\n\n<assistant>\n section\n\n<assistant>\n defines\n\n<assistant>\n how\n\n<assistant>\n to\n\n<assistant>\n route\n\n<assistant>\n incoming\n\n<assistant>\n requests\n\n<assistant>\n to\n\n<assistant>\n these\n\n<assistant>\n models\n\n<assistant>\n based\n\n<assistant>\n on\n\n<assistant>\n specific\n\n<assistant>\n keywords\n\n<assistant>\n or\n\n<assistant>\n phrases\n\n<assistant>\n.\n\n<assistant>\n\n\n\n<assistant>\n\n\n\n<assistant>\nThe\n\n<assistant>\n `\n\n<assistant>\ndefaults\n\n<assistant>\n`\n\n<assistant>\n section\n\n<assistant>\n sets\n\n<assistant>\n some\n\n<assistant>\n general\n\n<assistant>\n settings\n\n<assistant>\n,\n\n<assistant>\n such\n\n<assistant>\n as\n\n<assistant>\n the\n\n<assistant>\n timeout\n\n<assistant>\n in\n\n<assistant>\n seconds\n\n<assistant>\n and\n\n<assistant>\n the\n\n<assistant>\n maximum\n\n<assistant>\n number\n\n<assistant>\n of\n\n<assistant>\n tokens\n\n<assistant>\n allowed\n\n<assistant>\n per\n\n<assistant>\n request\n\n<assistant>\n.\n\n<assistant>\n\n\n\n<assistant>\n\n\n\n<assistant>\nIf\n\n<assistant>\n you\n\n<assistant>\n'\n\n<assistant>\nd\n\n<assistant>\n like\n\n<assistant>\n to\n\n<assistant>\n make\n\n<assistant>\n changes\n\n<assistant>\n to\n\n<assistant>\n this\n\n<assistant>\n file\n\n<assistant>\n,\n\n<assistant>\n I\n\n<assistant>\n can\n\n<assistant>\n offer\n\n<assistant>\n that\n\n<assistant>\n you\n\n<assistant>\n use\n\n<assistant>\n the\n\n<assistant>\n Apply\n\n<assistant>\n Button\n\n<assistant>\n on\n\n<assistant>\n the\n\n<assistant>\n code\n\n<assistant>\n block\n\n<assistant>\n or\n\n<assistant>\n switch\n\n<assistant>\n to\n\n<assistant>\n Agent\n\n<assistant>\n Mode\n\n<assistant>\n to\n\n<assistant>\n make\n\n<assistant>\n the\n\n<assistant>\n suggested\n\n<assistant>\n updates\n\n<assistant>\n automatically\n\n<assistant>\n.\n\n<assistant>\n\n\n"
+        }
+      ],
+      "isGatheringContext": false
+    }
+  ],
+  "mode": "agent",
+  "chatModelTitle": "StarCoder2.3b"
+}
