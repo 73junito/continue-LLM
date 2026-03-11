@@ -1,0 +1,32 @@
+name: Local Config
+version: 1.0.0
+schema: v1
+
+models:
+  - id: explanation
+    name: Llama3
+    description: 'Use for explanations, summaries, and natural-language reasoning.'
+    provider: ollama
+    model: llama3:latest
+    apiBase: 'http://localhost:11434'
+
+  - id: coding
+    name: StarCoder2.3b
+    description: 'Use for code generation, edits, and developer tasks.'
+    provider: ollama
+    model: starcoder2:3b
+    apiBase: 'http://localhost:11434'
+
+routes:
+  - match: '(explain|explanation|summary|summarize|describe|why|how)'
+    model: explanation
+
+  - match: '(code|implement|fix|refactor|patch|function|class|compile|error)'
+    model: coding
+
+  - match: '(autocomplete|complete|suggest)'
+    model: coding
+
+defaults:
+  timeout_seconds: 120
+  max_tokens: 8192
