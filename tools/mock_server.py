@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+"""
+Simple mock HTTP server for /api/chat and /v1/api/chat used for local testing.
+No external dependencies required — uses Python stdlib only.
+
+Run (Windows PowerShell):
+    python tools/mock_server.py
+
+Run (WSL):
+    python3 tools/mock_server.py
+
+The server listens on 0.0.0.0:11435 by default so it's reachable from WSL <-> Windows.
+"""
+
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import json
+import uuid
+import argparse
+
+class Handler(BaseHTTPRequestHandler):
+    def _set_json(self, code=200):
+        self.send_response(code)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.end_headers()
+
+    def do_GET(self):
+        if self.path == '/' or self.path.startswith('/api'):
+            self._set_json(200)
+            self.wfile.write(json.dumps({'status': 'ok', 'paths': ['/api/chat','/v1/api/chat']}).encode('utf-8'))
+        else:
+            self._set_json(404)
+            self.wfile.write(json.dumps({'error': 'not found'}).encode('utf-8'))
+
+    def do_POST(self):
+        if self.path not in ('/api/chat', '/v1/api/chat'):
+            self._set_json(404)
+            self.wfile.write(json.dumps({'error': 'not found'}).encode('utf-8'))
+            return
+
+        length = int(self.headers.get('content-length', 0))
+        payload = self.rfile.read(length).decode('utf-8') if length else ''
+        try:
+            data = json.loads(payload) if payload else {}
+        except Exception:
+            self._set_json(400)
+            self.wfile.write(json.dumps({'error': 'invalid json'}).encode('utf-8'))
+            return
+
+        # simple echo-style mock reply
+        req_id = str(uuid.uuid4())
+        user_msg = None
+        try:
+            msgs = data.get('messages') or []
+            if isinstance(msgs, list) and msgs:
+                user_msg = msgs[-1].get('content')
+        except Exception:
+            user_msg = None
+
+        reply = {
+            'request_id': req_id,
+            'model': data.get('model'),
+            'reply': f'Mock reply echo: {user_msg}' if user_msg else 'Mock reply',
+            'received': data,
+        }
+
+        # include request-id header for client parsing
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('request-id', req_id)
+        self.end_headers()
+        self.wfile.write(json.dumps(reply).encode('utf-8'))
+
+
+def run(host='0.0.0.0', port=11435):
+    server = HTTPServer((host, port), Handler)
+    print(f'Mock server listening on http://{host}:{port} (CTRL+C to stop)')
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print('Shutting down')
+        server.server_close()
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--host', default='0.0.0.0')
+    parser.add_argument('--port', type=int, default=11435)
+    args = parser.parse_args()
+    run(args.host, args.port)

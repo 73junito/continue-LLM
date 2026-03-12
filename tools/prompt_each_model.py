@@ -2,6 +2,7 @@ import os
 import subprocess
 import requests
 import json
+import argparse
 
 OLLAMA_BASE = os.environ.get('OLLAMA_BASE_URL', 'http://127.0.0.1:11435')
 CHAT_PATHS = ['/api/chat', '/v1/api/chat']
@@ -37,30 +38,95 @@ def prompt_model(model, prompt='hello world'):
         try:
             resp = requests.post(url, json=body, timeout=60)
             resp.raise_for_status()
-            return True, resp.text
+            # try to parse JSON response, but fall back to text
+            parsed = None
+            try:
+                parsed = resp.json()
+            except Exception:
+                parsed = resp.text
+
+            # attempt to capture request id headers if present
+            request_id = resp.headers.get('request-id') or resp.headers.get('x-request-id')
+
+            return True, {'status_code': resp.status_code, 'request_id': request_id, 'body': parsed}
         except Exception as e:
             last_exc = e
             continue
     return False, str(last_exc)
 
 
+def load_models_from_file(path):
+    if not os.path.exists(path):
+        return []
+    models = []
+    try:
+        with open(path, 'r', encoding='utf-8') as fh:
+            for line in fh:
+                line = line.strip()
+                if not line or line.startswith('#'):
+                    continue
+                models.append(line)
+    except Exception:
+        return []
+    return models
+
+
 def main():
-    models = list_models()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--prompt', '-p', help='Prompt to send', default=os.environ.get('PROMPT', 'hello world'))
+    parser.add_argument('--models-file', '-m', help='Optional file with model names (one per line)')
+    parser.add_argument('--mock', action='store_true', help='Use mock responses instead of calling Ollama')
+    args = parser.parse_args()
+
+    if args.models_file:
+        models = load_models_from_file(args.models_file)
+    else:
+        models = list_models()
+
     if not models:
         print('No models found.')
         return
+
     out = []
+    os.makedirs('outputs', exist_ok=True)
+    out_path = os.path.join('outputs', 'prompt_each_model.jsonl')
+
     for m in models:
         print(f'Prompting model: {m}')
-        ok, text = prompt_model(m)
-        print('OK' if ok else 'FAIL', '-', text[:1000])
-        out.append({'model': m, 'ok': ok, 'raw': text})
-    # write results
-    os.makedirs('outputs', exist_ok=True)
-    with open('outputs/prompt_each_model.jsonl', 'w', encoding='utf-8') as f:
+        if args.mock:
+            # produce a stubbed response for testing
+            record = {
+                'model': m,
+                'prompt': args.prompt,
+                'ok': True,
+                'status_code': 200,
+                'request_id': f'mock-{m}',
+                'response': {'text': f'Mock response for {m}: {args.prompt}'}
+            }
+            print('MOCK OK -', record['response']['text'])
+        else:
+            ok, resp = prompt_model(m, prompt=args.prompt)
+            if ok:
+                record = {
+                    'model': m,
+                    'prompt': args.prompt,
+                    'ok': True,
+                    'status_code': resp.get('status_code') if isinstance(resp, dict) else None,
+                    'request_id': resp.get('request_id') if isinstance(resp, dict) else None,
+                    'response': resp.get('body') if isinstance(resp, dict) else resp,
+                }
+                print('OK -', json.dumps(record['response'])[:1000])
+            else:
+                record = {'model': m, 'prompt': args.prompt, 'ok': False, 'error': resp}
+                print('FAIL -', resp)
+
+        out.append(record)
+
+    with open(out_path, 'w', encoding='utf-8') as f:
         for item in out:
             f.write(json.dumps(item, ensure_ascii=False) + '\n')
-    print('Wrote outputs/prompt_each_model.jsonl')
+
+    print(f'Wrote {out_path}')
 
 if __name__ == '__main__':
     main()

@@ -161,14 +161,8 @@ sub is_work_tree_watched {
 }
 
 sub get_working_dir {
-	my $working_dir;
-	if ($^O =~ 'msys' || $^O =~ 'cygwin') {
-		$working_dir = Win32::GetCwd();
-		$working_dir =~ tr/\\/\//;
-	} else {
-		require Cwd;
-		$working_dir = Cwd::cwd();
-	}
-
+	require Cwd;
+	my $working_dir = Cwd::cwd();
+	$working_dir =~ tr/\\/\//;
 	return $working_dir;
 }

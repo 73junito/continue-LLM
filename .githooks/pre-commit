@@ -1,0 +1,7 @@
+#!/bin/sh
+# Prevent accidental secret commits using gitleaks
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks protect --staged || { echo "gitleaks blocked the commit"; exit 1; }
+else
+  echo "gitleaks not installed; skipping pre-commit secret check"
+fi

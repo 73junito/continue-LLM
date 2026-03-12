@@ -28,3 +28,21 @@ outputs/
 # OS
 .DS_Store
 Thumbs.db
+
+# Model outputs
+outputs/
+*.jsonl
+
+# Logs and artifacts
+*.log
+
+# Local environment secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/

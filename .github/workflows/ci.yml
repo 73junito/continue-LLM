@@ -26,13 +26,17 @@ jobs:
       - name: Install Node deps
         run: npm ci
 
+      - name: Run npm audit
+        run: |
+          npm audit --audit-level=high
+
       - name: Validate YAML/schema
         run: |
           npm run lint-schema || true
           npm run validate-config || true
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
@@ -40,6 +44,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install fastapi uvicorn requests flask pyyaml pytest
+
+      - name: Install pip-audit
+        run: |
+          python -m pip install --upgrade pip
+          pip install pip-audit
+
+      - name: Run pip-audit
+        run: |
+          pip-audit
 
       - name: Run unit tests
         run: |
