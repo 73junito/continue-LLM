@@ -16,6 +16,10 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import uuid
 import argparse
+import time
+
+# module-level latency (seconds). Set by `run()` from CLI arg `--latency`.
+LATENCY = 0.0
 
 class Handler(BaseHTTPRequestHandler):
     def _set_json(self, code=200):
@@ -24,6 +28,8 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+        if LATENCY > 0:
+            time.sleep(LATENCY)
         if self.path == '/' or self.path.startswith('/api'):
             self._set_json(200)
             self.wfile.write(json.dumps({'status': 'ok', 'paths': ['/api/chat','/v1/api/chat']}).encode('utf-8'))
@@ -32,6 +38,8 @@ class Handler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps({'error': 'not found'}).encode('utf-8'))
 
     def do_POST(self):
+        if LATENCY > 0:
+            time.sleep(LATENCY)
         if self.path not in ('/api/chat', '/v1/api/chat'):
             self._set_json(404)
             self.wfile.write(json.dumps({'error': 'not found'}).encode('utf-8'))
@@ -72,7 +80,10 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def run(host='0.0.0.0', port=11435):
+    global LATENCY
     server = HTTPServer((host, port), Handler)
+    if LATENCY:
+        print(f'Using latency={LATENCY} seconds for responses')
     print(f'Mock server listening on http://{host}:{port} (CTRL+C to stop)')
     try:
         server.serve_forever()
@@ -85,5 +96,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--host', default='0.0.0.0')
     parser.add_argument('--port', type=int, default=11435)
+    parser.add_argument('--latency', type=float, default=0.0, help='Add artificial response latency in seconds')
     args = parser.parse_args()
+    LATENCY = float(args.latency)
     run(args.host, args.port)
