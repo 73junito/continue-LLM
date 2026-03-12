@@ -12,7 +12,7 @@ Run (WSL):
 The server listens on 0.0.0.0:11435 by default so it's reachable from WSL <-> Windows.
 """
 
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import uuid
 import argparse
@@ -33,6 +33,13 @@ class Handler(BaseHTTPRequestHandler):
         try:
             if LATENCY > 0:
                 time.sleep(LATENCY)
+            if self.path == '/health':
+                self._set_json(200)
+                try:
+                    self.wfile.write(json.dumps({'status': 'healthy'}).encode('utf-8'))
+                except (ConnectionResetError, BrokenPipeError, OSError) as e:
+                    self.log_error('Client disconnected during /health response: %s', e)
+                return
             if self.path == '/' or self.path.startswith('/api'):
                 self._set_json(200)
                 try:
@@ -88,6 +95,22 @@ class Handler(BaseHTTPRequestHandler):
             except Exception:
                 user_msg = None
 
+            # prepare model-specific reply text
+            model = data.get('model')
+            if model and isinstance(model, str):
+                m = model.lower()
+            else:
+                m = ''
+
+            if m and 'math' in m:
+                reply_text = f"Mock math model solving: {user_msg}"
+            elif m and 'qwen' in m:
+                reply_text = f"Mock Qwen response: {user_msg}"
+            elif m:
+                reply_text = f"Mock response for {model}: {user_msg}"
+            else:
+                reply_text = f"Mock reply echo: {user_msg}" if user_msg else 'Mock reply'
+
             # If client requested streaming, use chunked transfer encoding
             if data.get('stream'):
                 try:
@@ -98,7 +121,6 @@ class Handler(BaseHTTPRequestHandler):
                     self.send_header('request-id', req_id)
                     self.end_headers()
 
-                    reply_text = f'Mock reply echo: {user_msg}' if user_msg else 'Mock reply'
                     # simple tokenization: split on whitespace to produce small chunks
                     tokens = reply_text.split()
                     for tok in tokens:
@@ -169,9 +191,10 @@ class Handler(BaseHTTPRequestHandler):
 
 def run(host='0.0.0.0', port=11435):
     global LATENCY
-    server = HTTPServer((host, port), Handler)
+    server = ThreadingHTTPServer((host, port), Handler)
+    print(f'Streaming supported: yes')
     if LATENCY:
-        print(f'Using latency={LATENCY} seconds for responses')
+        print(f'Latency simulation: {LATENCY}s')
     print(f'Mock server listening on http://{host}:{port} (CTRL+C to stop)')
     try:
         server.serve_forever()
