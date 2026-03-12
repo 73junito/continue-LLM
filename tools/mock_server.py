@@ -30,81 +30,127 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        if LATENCY > 0:
-            time.sleep(LATENCY)
-        if self.path == '/' or self.path.startswith('/api'):
-            self._set_json(200)
-            self.wfile.write(json.dumps({'status': 'ok', 'paths': ['/api/chat','/v1/api/chat']}).encode('utf-8'))
-        else:
-            self._set_json(404)
-            self.wfile.write(json.dumps({'error': 'not found'}).encode('utf-8'))
+        try:
+            if LATENCY > 0:
+                time.sleep(LATENCY)
+            if self.path == '/' or self.path.startswith('/api'):
+                self._set_json(200)
+                try:
+                    self.wfile.write(json.dumps({'status': 'ok', 'paths': ['/api/chat','/v1/api/chat']}).encode('utf-8'))
+                except (ConnectionResetError, BrokenPipeError, OSError) as e:
+                    self.log_error('Client disconnected during GET response: %s', e)
+            else:
+                self._set_json(404)
+                try:
+                    self.wfile.write(json.dumps({'error': 'not found'}).encode('utf-8'))
+                except (ConnectionResetError, BrokenPipeError, OSError) as e:
+                    self.log_error('Client disconnected during GET 404 response: %s', e)
+        except Exception as e:
+            # Catch-all to avoid crashing the server for unexpected errors
+            self.log_error('Unhandled error in do_GET: %s', e)
 
     def do_POST(self):
-        if LATENCY > 0:
-            time.sleep(LATENCY)
-        if self.path not in ('/api/chat', '/v1/api/chat'):
-            self._set_json(404)
-            self.wfile.write(json.dumps({'error': 'not found'}).encode('utf-8'))
-            return
-
-        length = int(self.headers.get('content-length', 0))
-        payload = self.rfile.read(length).decode('utf-8') if length else ''
         try:
-            data = json.loads(payload) if payload else {}
-        except Exception:
-            self._set_json(400)
-            self.wfile.write(json.dumps({'error': 'invalid json'}).encode('utf-8'))
-            return
-
-        # simple echo-style mock reply
-        req_id = str(uuid.uuid4())
-        user_msg = None
-        try:
-            msgs = data.get('messages') or []
-            if isinstance(msgs, list) and msgs:
-                user_msg = msgs[-1].get('content')
-        except Exception:
-            user_msg = None
-
-        # If client requested streaming, use chunked transfer encoding
-        if data.get('stream'):
-            # send headers (no Content-Length) and enable chunked transfer
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json; charset=utf-8')
-            self.send_header('Transfer-Encoding', 'chunked')
-            self.send_header('request-id', req_id)
-            self.end_headers()
-
-            reply_text = f'Mock reply echo: {user_msg}' if user_msg else 'Mock reply'
-            # simple tokenization: split on whitespace to produce small chunks
-            tokens = reply_text.split()
-            for tok in tokens:
-                chunk_obj = {'request_id': req_id, 'model': data.get('model'), 'delta': tok, 'done': False}
-                chunk_bytes = (json.dumps(chunk_obj) + '\n').encode('utf-8')
-                # write chunk: <size in hex>\r\n<data>\r\n
-                self.wfile.write(f"{len(chunk_bytes):x}\r\n".encode('utf-8'))
-                self.wfile.write(chunk_bytes)
-                self.wfile.write(b"\r\n")
+            if LATENCY > 0:
+                time.sleep(LATENCY)
+            if self.path not in ('/api/chat', '/v1/api/chat'):
+                self._set_json(404)
                 try:
-                    self.wfile.flush()
-                except Exception:
-                    pass
-                # small delay between chunks to better simulate streaming
-                time.sleep(0.05)
+                    self.wfile.write(json.dumps({'error': 'not found'}).encode('utf-8'))
+                except (ConnectionResetError, BrokenPipeError, OSError) as e:
+                    self.log_error('Client disconnected during POST 404 response: %s', e)
+                return
 
-            # final done message
-            final_obj = {'request_id': req_id, 'model': data.get('model'), 'delta': '', 'done': True}
-            final_bytes = (json.dumps(final_obj) + '\n').encode('utf-8')
-            self.wfile.write(f"{len(final_bytes):x}\r\n".encode('utf-8'))
-            self.wfile.write(final_bytes)
-            self.wfile.write(b"\r\n")
-            # end of chunks
-            self.wfile.write(b"0\r\n\r\n")
+            length = int(self.headers.get('content-length', 0))
             try:
-                self.wfile.flush()
+                payload = self.rfile.read(length).decode('utf-8') if length else ''
+            except (ConnectionResetError, OSError) as e:
+                self.log_error('Client disconnected while reading request body: %s', e)
+                return
+
+            try:
+                data = json.loads(payload) if payload else {}
             except Exception:
-                pass
-            return
+                self._set_json(400)
+                try:
+                    self.wfile.write(json.dumps({'error': 'invalid json'}).encode('utf-8'))
+                except (ConnectionResetError, BrokenPipeError, OSError) as e:
+                    self.log_error('Client disconnected during invalid-json response: %s', e)
+                return
+
+            # simple echo-style mock reply
+            req_id = str(uuid.uuid4())
+            user_msg = None
+            try:
+                msgs = data.get('messages') or []
+                if isinstance(msgs, list) and msgs:
+                    user_msg = msgs[-1].get('content')
+            except Exception:
+                user_msg = None
+
+            # If client requested streaming, use chunked transfer encoding
+            if data.get('stream'):
+                try:
+                    # send headers (no Content-Length) and enable chunked transfer
+                    self.send_response(200)
+                    self.send_header('Content-Type', 'application/json; charset=utf-8')
+                    self.send_header('Transfer-Encoding', 'chunked')
+                    self.send_header('request-id', req_id)
+                    self.end_headers()
+
+                    reply_text = f'Mock reply echo: {user_msg}' if user_msg else 'Mock reply'
+                    # simple tokenization: split on whitespace to produce small chunks
+                    tokens = reply_text.split()
+                    for tok in tokens:
+                        chunk_obj = {'request_id': req_id, 'model': data.get('model'), 'delta': tok, 'done': False}
+                        chunk_bytes = (json.dumps(chunk_obj) + '\n').encode('utf-8')
+                        # write chunk: <size in hex>\r\n<data>\r\n
+                        self.wfile.write(f"{len(chunk_bytes):x}\r\n".encode('utf-8'))
+                        self.wfile.write(chunk_bytes)
+                        self.wfile.write(b"\r\n")
+                        try:
+                            self.wfile.flush()
+                        except (ConnectionResetError, BrokenPipeError, OSError) as e:
+                            self.log_error('Client disconnected during chunked streaming: %s', e)
+                            return
+                        # small delay between chunks to better simulate streaming
+                        time.sleep(0.05)
+
+                    # final done message
+                    final_obj = {'request_id': req_id, 'model': data.get('model'), 'delta': '', 'done': True}
+                    final_bytes = (json.dumps(final_obj) + '\n').encode('utf-8')
+                    self.wfile.write(f"{len(final_bytes):x}\r\n".encode('utf-8'))
+                    self.wfile.write(final_bytes)
+                    self.wfile.write(b"\r\n")
+                    # end of chunks
+                    self.wfile.write(b"0\r\n\r\n")
+                    try:
+                        self.wfile.flush()
+                    except (ConnectionResetError, BrokenPipeError, OSError) as e:
+                        self.log_error('Client disconnected after final chunk: %s', e)
+                    return
+                except (ConnectionResetError, BrokenPipeError, OSError) as e:
+                    self.log_error('Streaming failed due to client disconnect: %s', e)
+                    return
+
+            # non-stream response
+            reply = {
+                'request_id': req_id,
+                'model': data.get('model'),
+                'reply': f'Mock reply echo: {user_msg}' if user_msg else 'Mock reply',
+                'received': data,
+            }
+
+            try:
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.send_header('request-id', req_id)
+                self.end_headers()
+                self.wfile.write(json.dumps(reply).encode('utf-8'))
+            except (ConnectionResetError, BrokenPipeError, OSError) as e:
+                self.log_error('Client disconnected during POST response: %s', e)
+        except Exception as e:
+            self.log_error('Unhandled error in do_POST: %s', e)
 
         reply = {
             'request_id': req_id,
