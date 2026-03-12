@@ -7,6 +7,19 @@ import argparse
 OLLAMA_BASE = os.environ.get('OLLAMA_BASE_URL', 'http://127.0.0.1:11435')
 CHAT_PATHS = ['/api/chat', '/v1/api/chat']
 
+
+def fetch_models(base_url=OLLAMA_BASE):
+    url = base_url.rstrip('/') + '/models'
+    try:
+        resp = requests.get(url, timeout=5)
+        resp.raise_for_status()
+        data = resp.json()
+        models = [m.get('name') for m in data.get('models', []) if isinstance(m, dict) and m.get('name')]
+        return models
+    except Exception as e:
+        print(f'Failed to fetch models from {url}:', e)
+        return []
+
 def list_models():
     try:
         r = subprocess.run(['ollama', 'list'], capture_output=True, text=True, check=True)
@@ -81,7 +94,10 @@ def main():
     if args.models_file:
         models = load_models_from_file(args.models_file)
     else:
-        models = list_models()
+        # prefer /models discovery, fall back to `ollama list`
+        models = fetch_models(OLLAMA_BASE)
+        if not models:
+            models = list_models()
 
     if not models:
         print('No models found.')
