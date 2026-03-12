@@ -22,6 +22,8 @@ import time
 LATENCY = 0.0
 
 class Handler(BaseHTTPRequestHandler):
+    # Use HTTP/1.1 so we can emit chunked transfer responses for streaming
+    protocol_version = 'HTTP/1.1'
     def _set_json(self, code=200):
         self.send_response(code)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
@@ -63,6 +65,46 @@ class Handler(BaseHTTPRequestHandler):
                 user_msg = msgs[-1].get('content')
         except Exception:
             user_msg = None
+
+        # If client requested streaming, use chunked transfer encoding
+        if data.get('stream'):
+            # send headers (no Content-Length) and enable chunked transfer
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Transfer-Encoding', 'chunked')
+            self.send_header('request-id', req_id)
+            self.end_headers()
+
+            reply_text = f'Mock reply echo: {user_msg}' if user_msg else 'Mock reply'
+            # simple tokenization: split on whitespace to produce small chunks
+            tokens = reply_text.split()
+            for tok in tokens:
+                chunk_obj = {'request_id': req_id, 'model': data.get('model'), 'delta': tok, 'done': False}
+                chunk_bytes = (json.dumps(chunk_obj) + '\n').encode('utf-8')
+                # write chunk: <size in hex>\r\n<data>\r\n
+                self.wfile.write(f"{len(chunk_bytes):x}\r\n".encode('utf-8'))
+                self.wfile.write(chunk_bytes)
+                self.wfile.write(b"\r\n")
+                try:
+                    self.wfile.flush()
+                except Exception:
+                    pass
+                # small delay between chunks to better simulate streaming
+                time.sleep(0.05)
+
+            # final done message
+            final_obj = {'request_id': req_id, 'model': data.get('model'), 'delta': '', 'done': True}
+            final_bytes = (json.dumps(final_obj) + '\n').encode('utf-8')
+            self.wfile.write(f"{len(final_bytes):x}\r\n".encode('utf-8'))
+            self.wfile.write(final_bytes)
+            self.wfile.write(b"\r\n")
+            # end of chunks
+            self.wfile.write(b"0\r\n\r\n")
+            try:
+                self.wfile.flush()
+            except Exception:
+                pass
+            return
 
         reply = {
             'request_id': req_id,
