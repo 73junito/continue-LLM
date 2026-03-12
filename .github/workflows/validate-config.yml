@@ -5,6 +5,7 @@ on:
     paths:
       - "config.yaml"
       - "config.schema.json"
+      - "schema/**"
       - "scripts/validate-config.js"
       - ".github/workflows/validate-config.yml"
       - "examples/**"
@@ -13,6 +14,7 @@ on:
     paths:
       - "config.yaml"
       - "config.schema.json"
+      - "schema/**"
       - "scripts/validate-config.js"
       - "examples/**"
 
@@ -32,6 +34,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Lint schema
+        run: npm run lint-schema
 
       - name: Validate configuration
         run: |

@@ -4,7 +4,8 @@
 	"description": "My Continue Configuration",
 	"main": "config.js",
 	"scripts": {
-		"validate-config": "node ./scripts/validate-config.js ./config.yaml",
+		"validate-config": "node ./scripts/validate-config.js ./config.yaml examples/*.yaml",
+		"lint-schema": "node ./scripts/lint-schema.js",
 		"prepare": "husky install"
 	},
 	"dependencies": {

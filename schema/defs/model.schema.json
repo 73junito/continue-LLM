@@ -16,19 +16,80 @@
     "allOf": [
       {
         "if": { "properties": { "provider": { "const": "openai" } } },
-        "then": { "$ref": "providers/openai" }
+        "then": {
+          "allOf": [
+            { "$ref": "providers/openai" },
+            {
+              "properties": {
+                "modelArgs": {
+                  "type": "object",
+                  "properties": {
+                    "temperature": { "type": "number", "minimum": 0, "maximum": 2 },
+                    "top_p": { "type": "number", "minimum": 0, "maximum": 1 },
+                    "max_tokens": { "type": "integer", "minimum": 1 },
+                    "presence_penalty": { "type": "number" },
+                    "frequency_penalty": { "type": "number" }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "if": { "properties": { "provider": { "const": "anthropic" } } },
-        "then": { "$ref": "providers/anthropic" }
+        "then": {
+          "allOf": [
+            { "$ref": "providers/anthropic" },
+            {
+              "properties": {
+                "modelArgs": {
+                  "type": "object",
+                  "properties": {
+                    "temperature": { "type": "number", "minimum": 0, "maximum": 1 },
+                    "max_tokens_to_sample": { "type": "integer", "minimum": 1 }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "if": { "properties": { "provider": { "const": "ollama" } } },
-        "then": { "$ref": "providers/ollama" }
+        "then": {
+          "allOf": [
+            { "$ref": "providers/ollama" },
+            {
+              "properties": {
+                "modelArgs": {
+                  "type": "object",
+                  "properties": {
+                    "temperature": { "type": "number", "minimum": 0, "maximum": 1 },
+                    "top_k": { "type": "integer", "minimum": 0 },
+                    "max_tokens": { "type": "integer", "minimum": 1 }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "if": { "properties": { "provider": { "const": "local" } } },
-        "then": { "$ref": "providers/local" }
+        "then": {
+          "allOf": [
+            { "$ref": "providers/local" },
+            {
+              "properties": {
+                "modelArgs": { "type": "object", "additionalProperties": true }
+              }
+            }
+          ]
+        }
       }
     ]
   }

@@ -14,23 +14,36 @@ function loadJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
-const configPath = process.argv[2] || path.join(__dirname, '..', 'config.yaml');
+const defaultConfig = path.join(__dirname, '..', 'config.yaml');
 const schemaPath = path.join(__dirname, '..', 'config.schema.json');
 
+const files = process.argv.slice(2).length ? process.argv.slice(2) : [defaultConfig];
+
 try {
-  const config = loadYaml(configPath);
   const schema = loadJson(schemaPath);
   const validate = ajv.compile(schema);
-  const valid = validate(config);
 
-  if (valid) {
-    console.log('config.yaml is valid according to config.schema.json');
-    process.exit(0);
-  } else {
-    console.error('Validation errors:\n' + ajv.errorsText(validate.errors, { separator: '\n' }));
-    process.exit(2);
+  for (const filePath of files) {
+    try {
+      console.log(`Validating ${filePath}...`);
+      const config = loadYaml(filePath);
+      const valid = validate(config);
+
+      if (!valid) {
+        console.error(`❌ ${filePath} is invalid`);
+        console.error(ajv.errorsText(validate.errors, { separator: '\n' }));
+        process.exit(2);
+      }
+
+      console.log(`✅ ${filePath} is valid`);
+    } catch (err) {
+      console.error(`Failed to validate ${filePath}:`, err.message || err);
+      process.exit(3);
+    }
   }
+
+  process.exit(0);
 } catch (err) {
-  console.error('Failed to validate config:', err.message || err);
+  console.error('Failed to load schema or initialize validator:', err.message || err);
   process.exit(3);
 }
