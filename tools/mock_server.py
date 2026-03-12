@@ -21,6 +21,13 @@ import time
 # module-level latency (seconds). Set by `run()` from CLI arg `--latency`.
 LATENCY = 0.0
 
+# default mock models exposed by /models
+DEFAULT_MODELS = [
+    {"name": "mistral:7b"},
+    {"name": "qwen3:1.7b"},
+    {"name": "qwen2-math:1.5b"},
+]
+
 class Handler(BaseHTTPRequestHandler):
     # Use HTTP/1.1 so we can emit chunked transfer responses for streaming
     protocol_version = 'HTTP/1.1'
@@ -33,6 +40,14 @@ class Handler(BaseHTTPRequestHandler):
         try:
             if LATENCY > 0:
                 time.sleep(LATENCY)
+            # models discovery endpoint
+            if self.path == '/models' or self.path == '/api/models':
+                self._set_json(200)
+                try:
+                    self.wfile.write(json.dumps({"models": DEFAULT_MODELS}).encode('utf-8'))
+                except (ConnectionResetError, BrokenPipeError, OSError) as e:
+                    self.log_error('Client disconnected during /models response: %s', e)
+                return
             if self.path == '/health':
                 self._set_json(200)
                 try:
