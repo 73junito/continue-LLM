@@ -62,54 +62,52 @@ Next steps
 
 ## Provider Examples
 
+Each example below shows a valid `models` entry for the respective provider. Place these entries inside the `models` array in your `config.yaml`.
+
 ### Ollama
 
 ```yaml
-provider: ollama
-apiBase: http://localhost:11434
-apiVersion: v1
-timeout: 5000
 models:
   - id: llama3
-    name: llama3
-    modelArgs:
-      temperature: 0.7
+    name: Llama 3
+    description: 'Local Llama 3 model via Ollama.'
+    provider: ollama
+    model: llama3:latest
+    apiBase: http://localhost:11434
 ```
 
 ### OpenAI
 
 ```yaml
-provider: openai
-apiKey: sk-XXXX
-timeout: 10000
 models:
   - id: gpt-4
-    name: gpt-4
-    modelArgs:
-      temperature: 1
+    name: GPT-4
+    description: 'OpenAI GPT-4 model.'
+    provider: openai
+    model: gpt-4
+    apiKey: sk-XXXX
 ```
 
 ### Anthropic
 
 ```yaml
-provider: anthropic
-apiKey: sk-XXXX
-timeout: 10000
 models:
   - id: claude-v1
-    name: claude-v1
-    modelArgs:
-      temperature: 0.9
+    name: Claude v1
+    description: 'Anthropic Claude v1 model.'
+    provider: anthropic
+    model: claude-instant-1
+    apiKey: sk-ant-XXXX
 ```
 
 ### Local
 
 ```yaml
-provider: local
-apiBase: http://localhost:11434
-apiVersion: v1
-timeout: 5000
 models:
   - id: local-model
-    name: local-model
+    name: Local Model
+    description: 'Custom local model.'
+    provider: local
+    model: local:latest
+    apiBase: http://localhost:11434
 ```
