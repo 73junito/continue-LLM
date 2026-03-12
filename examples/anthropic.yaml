@@ -7,7 +7,7 @@ models:
     name: claude-v1
     provider: anthropic
     model: claude-v1
-    apiKey: sk-REPLACE_ME
+    apiKey: ${ANTHROPIC_API_KEY}
 
 routes:
   - match: '(assistant|chat)'
