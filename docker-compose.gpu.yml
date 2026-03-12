@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  continue-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    image: continue-llm-gpu:latest
+    volumes:
+      - ./:/workspace
+    working_dir: /workspace
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    # Preferred: use Docker Compose `gpus` setting (Compose v2+) to expose GPUs
+    gpus: all
+    deploy: {}
+    command: bash -c "python3 examples/benchmark_gpu.py"
+    # If your Docker/Compose setup supports specifying the GPU runtime, enable it.
+    # For older setups use: runtime: nvidia

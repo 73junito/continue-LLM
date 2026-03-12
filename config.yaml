@@ -7,14 +7,14 @@ models:
     name: Llama3
     description: 'General-purpose reasoning, summarization, and explanations.'
     provider: ollama
-    model: llama3:latest
+    model: mistral:7b
     apiBase: 'http://127.0.0.1:11435'
 
   - id: coding
     name: StarCoder2.3b
     description: 'Code generation, editing, and developer-focused tasks.'
     provider: ollama
-    model: starcoder2:3b
+    model: qwen3:1.7b
     apiBase: 'http://127.0.0.1:11435'
 
   - id: mistral-7b

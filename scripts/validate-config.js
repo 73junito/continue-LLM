@@ -4,6 +4,7 @@ const yaml = require('js-yaml');
 const Ajv = require('ajv');
 
 const ajv = new Ajv({ allErrors: true, strict: false });
+const glob = require('glob');
 
 function loadYaml(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');
@@ -17,7 +18,22 @@ function loadJson(filePath) {
 const defaultConfig = path.join(__dirname, '..', 'config.yaml');
 const schemaPath = path.join(__dirname, '..', 'config.schema.json');
 
-const files = process.argv.slice(2).length ? process.argv.slice(2) : [defaultConfig];
+function expandPatterns(patterns) {
+  const out = [];
+  for (const p of patterns) {
+    // If it looks like a glob, expand it, otherwise use as-is
+    if (/[*?\[\]]/.test(p)) {
+      const matches = glob.sync(p, { nodir: true });
+      if (matches && matches.length) out.push(...matches);
+    } else {
+      out.push(p);
+    }
+  }
+  return out;
+}
+
+const rawArgs = process.argv.slice(2);
+const files = rawArgs.length ? expandPatterns(rawArgs) : [defaultConfig];
 
 try {
   const schema = loadJson(schemaPath);

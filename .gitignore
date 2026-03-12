@@ -1,0 +1,30 @@
+# Node
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+env/
+.venv/
+
+# Local env files
+.env
+*.env
+
+# Secrets and keys
+*.pem
+*.key
+secrets.json
+
+# Outputs and artifacts
+outputs/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
