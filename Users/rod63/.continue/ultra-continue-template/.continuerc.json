@@ -1,0 +1,92 @@
+{
+  // "$schema": "https://docs.continue.dev/schema.json",
+
+  "models": [
+    {
+      "title": "StarCoder2-Code",
+      "provider": "ollama",
+      "model": "starcoder2:3b",
+      "contextLength": 16384,
+      "maxTokens": 1500,
+      "temperature": 0.15,
+      "topP": 0.9,
+      "topK": 50,
+      "repeatPenalty": 1.1,
+      "stop": ["<file_sep>", "<|end_of_text|>", "</s>"],
+      "usage": ["file-level coding", "autocomplete", "unit test generation"]
+    },
+    {
+      "title": "DeepSeek-Coder",
+      "provider": "ollama",
+      "model": "deepseek-coder:6.7b",
+      "contextLength": 16384,
+      "maxTokens": 2000,
+      "temperature": 0.2,
+      "topP": 0.95,
+      "usage": ["multi-file refactoring", "performance optimization", "complex edits"]
+    },
+    {
+      "title": "Llama3-Reasoning",
+      "provider": "ollama",
+      "model": "llama3",
+      "contextLength": 16384,
+      "maxTokens": 2000,
+      "temperature": 0.35,
+      "topP": 0.95,
+      "usage": ["explanations", "planning", "architecture analysis"]
+    }
+  ],
+
+  "embeddingsProvider": {
+    "provider": "ollama",
+    "model": "nomic-embed-text"
+  },
+
+  "taskRouting": {
+    "explain": "Llama3-Reasoning",
+    "refactor": "DeepSeek-Coder",
+    "optimize": "DeepSeek-Coder",
+    "autocomplete": "StarCoder2-Code",
+    "unitTests": "StarCoder2-Code",
+    "documentation": "StarCoder2-Code",
+    "architectureAnalysis": "Llama3-Reasoning",
+    "codeReview": ["StarCoder2-Code", "DeepSeek-Coder", "Llama3-Reasoning"]
+  },
+
+  "parallelProcessing": true,
+
+  "systemMessage": "You are a multi-model AI coding assistant. StarCoder2 handles coding and autocomplete, DeepSeek-Coder handles multi-file edits and optimization, Llama3 handles reasoning and architecture. Respect project structure, maintain readability, generate documentation and tests, and explain reasoning where needed.",
+
+  "contextProviders": [
+    { "name": "code" },
+    { "name": "folder" },
+    { "name": "docs" },
+    { "name": "diff" },
+    { "name": "terminal" },
+    { "name": "problems" },
+    { "name": "versionControl" }
+  ],
+
+  "slashCommands": [
+    { "name": "explain", "description": "Explain code or project module using reasoning model" },
+    { "name": "refactor", "description": "Perform multi-file refactoring" },
+    { "name": "optimize", "description": "Optimize performance and readability" },
+    { "name": "tests", "description": "Generate unit tests for module or function" },
+    { "name": "comment", "description": "Add comments or docstrings" },
+    { "name": "review", "description": "Perform AI code review using all models" },
+    { "name": "architecture", "description": "Analyze project structure and dependencies" },
+    { "name": "cleanup", "description": "Simplify and clean code without changing behavior" },
+    { "name": "upgrade", "description": "Upgrade code to modern best practices" },
+    { "name": "gendocs", "description": "Generate documentation for module or project" }
+  ],
+
+  "tabAutocompleteModel": {
+    "title": "StarCoder2-Autocomplete",
+    "provider": "ollama",
+    "model": "starcoder2:3b",
+    "temperature": 0.15,
+    "maxTokens": 300
+  },
+
+  "allowAnonymousTelemetry": false
+}

@@ -1,0 +1,16 @@
+{
+  "editor.inlineSuggest.enabled": true,
+  "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "strings": true,
+    "comments": true
+  },
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+  "editor.suggestSelection": "first",
+  "editor.tabCompletion": "on",
+  "terminal.integrated.env.windows": {
+    "OLLAMA_HOST": "http://127.0.0.1:11434"
+  }
+}
