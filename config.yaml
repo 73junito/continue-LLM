@@ -5,17 +5,38 @@ version: 1.0.0
 models:
   - id: explanation
     name: Llama3
-    description: 'Use for explanations, summaries, and natural-language reasoning.'
+    description: 'General-purpose reasoning, summarization, and explanations.'
     provider: ollama
     model: llama3:latest
-    apiBase: 'http://localhost:11434'
+    apiBase: 'http://127.0.0.1:11435'
 
   - id: coding
     name: StarCoder2.3b
-    description: 'Use for code generation, edits, and developer tasks.'
+    description: 'Code generation, editing, and developer-focused tasks.'
     provider: ollama
     model: starcoder2:3b
-    apiBase: 'http://localhost:11434'
+    apiBase: 'http://127.0.0.1:11435'
+
+  - id: mistral-7b
+    name: Mistral 7B
+    description: 'General-purpose local Mistral model for text generation.'
+    provider: ollama
+    model: mistral:7b
+    apiBase: 'http://127.0.0.1:11435'
+
+  - id: qwen3-1.7b
+    name: Qwen3 1.7B
+    description: 'Local Qwen3 1.7B model for text generation and reasoning.'
+    provider: ollama
+    model: qwen3:1.7b
+    apiBase: 'http://127.0.0.1:11435'
+
+  - id: qwen2-math-1.5b
+    name: Qwen2-Math 1.5B
+    description: 'Local Qwen2 1.5B model optimized for math reasoning.'
+    provider: ollama
+    model: qwen2-math:1.5b
+    apiBase: 'http://127.0.0.1:11435'
 
 routes:
   - match: '(explain|explanation|summary|summarize|describe|why|how)'
@@ -30,3 +51,5 @@ routes:
 defaults:
   timeout_seconds: 120
   max_tokens: 8192
+
+ 
