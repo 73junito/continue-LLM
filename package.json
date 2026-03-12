@@ -12,6 +12,7 @@
 		"js-yaml": "^4.1.0"
 	},
 	"devDependencies": {
-		"husky": "^8.0.0"
+		"husky": "^8.0.0",
+		"typescript": "^5.9.3"
 	}
 }
