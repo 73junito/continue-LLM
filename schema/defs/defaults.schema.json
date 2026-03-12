@@ -1,0 +1,10 @@
+{
+  "$id": "defs/defaults",
+  "type": "object",
+  "properties": {
+    "timeout_seconds": { "type": "integer", "minimum": 0 },
+    "max_tokens": { "type": "integer", "minimum": 1 }
+  },
+  "required": ["timeout_seconds", "max_tokens"],
+  "additionalProperties": false
+}

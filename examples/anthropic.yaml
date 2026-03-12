@@ -1,0 +1,18 @@
+name: Anthropic Example
+version: 1.0.0
+schema: v1
+
+models:
+  - id: claude-v1
+    name: claude-v1
+    provider: anthropic
+    model: claude-v1
+    apiKey: ${ANTHROPIC_API_KEY}
+
+routes:
+  - match: '(assistant|chat)'
+    model: claude-v1
+
+defaults:
+  timeout_seconds: 120
+  max_tokens: 8192

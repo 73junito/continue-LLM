@@ -1,0 +1,17 @@
+{
+	"name": "continue-config",
+	"version": "1.0.0",
+	"description": "My Continue Configuration",
+	"main": "config.js",
+	"scripts": {
+		"validate-config": "node ./scripts/validate-config.js ./config.yaml",
+		"prepare": "husky install"
+	},
+	"dependencies": {
+		"ajv": "^8.12.0",
+		"js-yaml": "^4.1.0"
+	},
+	"devDependencies": {
+		"husky": "^8.0.0"
+	}
+}

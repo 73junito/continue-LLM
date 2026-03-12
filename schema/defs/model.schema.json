@@ -1,0 +1,35 @@
+{
+  "$id": "defs/model",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": { "type": "string" },
+      "name": { "type": "string" },
+      "description": { "type": "string" },
+      "provider": { "type": "string", "enum": ["ollama", "openai", "anthropic", "local"] },
+      "model": { "type": "string" },
+      "apiBase": { "type": "string" },
+      "apiKey": { "type": "string" }
+    },
+    "required": ["id", "name", "provider", "model"],
+    "allOf": [
+      {
+        "if": { "properties": { "provider": { "const": "openai" } } },
+        "then": { "$ref": "providers/openai" }
+      },
+      {
+        "if": { "properties": { "provider": { "const": "anthropic" } } },
+        "then": { "$ref": "providers/anthropic" }
+      },
+      {
+        "if": { "properties": { "provider": { "const": "ollama" } } },
+        "then": { "$ref": "providers/ollama" }
+      },
+      {
+        "if": { "properties": { "provider": { "const": "local" } } },
+        "then": { "$ref": "providers/local" }
+      }
+    ]
+  }
+}

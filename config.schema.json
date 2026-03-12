@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Continue Local Config",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "schema": { "type": "string" },
+    "models": { "type": "array", "items": { "$ref": "#/$defs/model" } },
+    "routes": { "type": "array", "items": { "$ref": "#/$defs/route" } },
+    "defaults": { "$ref": "#/$defs/defaults" }
+  },
+  "required": ["name", "version", "schema", "models", "routes", "defaults"],
+  "additionalProperties": false,
+  "$defs": {
+    "provider": {
+      "type": "string",
+      "enum": ["ollama", "openai", "anthropic", "local"]
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "provider": { "$ref": "#/$defs/provider" },
+        "model": { "type": "string" },
+        "apiBase": { "type": "string" },
+        "apiKey": { "type": "string" }
+      },
+      "required": ["id", "name", "provider", "model"],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "provider": { "const": "openai" } } },
+          "then": { "required": ["apiKey"] }
+        },
+        {
+          "if": { "properties": { "provider": { "const": "anthropic" } } },
+          "then": { "required": ["apiKey"] }
+        },
+        {
+          "if": { "properties": { "provider": { "const": "ollama" } } },
+          "then": { "required": ["apiBase"] }
+        },
+        {
+          "if": { "properties": { "provider": { "const": "local" } } },
+          "then": { "required": ["apiBase"] }
+        }
+      ]
+    },
+    "route": {
+      "type": "object",
+      "properties": {
+        "match": { "type": "string" },
+        "model": { "type": "string" }
+      },
+      "required": ["match", "model"],
+      "additionalProperties": false
+    },
+    "defaults": {
+      "type": "object",
+      "properties": {
+        "timeout_seconds": { "type": "integer", "minimum": 0 },
+        "max_tokens": { "type": "integer", "minimum": 1 }
+      },
+      "required": ["timeout_seconds", "max_tokens"],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$id": "defs/route",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "match": { "type": "string" },
+      "model": { "type": "string" }
+    },
+    "required": ["match", "model"],
+    "additionalProperties": false
+  }
+}

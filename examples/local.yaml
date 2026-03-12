@@ -1,0 +1,18 @@
+name: Local Example
+version: 1.0.0
+schema: v1
+
+models:
+  - id: local-model
+    name: local-model
+    provider: local
+    model: local-model
+    apiBase: http://localhost:11434
+
+routes:
+  - match: '(local|test)'
+    model: local-model
+
+defaults:
+  timeout_seconds: 120
+  max_tokens: 8192

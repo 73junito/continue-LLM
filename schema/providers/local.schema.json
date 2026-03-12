@@ -1,0 +1,10 @@
+{
+  "$id": "providers/local",
+  "type": "object",
+  "required": ["apiBase"],
+  "properties": {
+    "apiBase": { "type": "string", "format": "uri" },
+    "apiVersion": { "type": "string", "default": "v1" },
+    "timeout": { "type": "integer", "minimum": 1000, "default": 5000 }
+  }
+}
