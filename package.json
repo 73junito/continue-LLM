@@ -4,12 +4,14 @@
 	"description": "My Continue Configuration",
 	"main": "config.js",
 	"scripts": {
-		"validate-config": "node ./scripts/validate-config.js ./config.yaml",
+		"validate-config": "node ./scripts/validate-config.js ./config.yaml examples/*.yaml",
+		"lint-schema": "node ./scripts/lint-schema.js",
 		"prepare": "husky install"
 	},
 	"dependencies": {
 		"ajv": "^8.12.0",
-		"js-yaml": "^4.1.0"
+		"js-yaml": "^4.1.0",
+		"glob": "^10.2.7"
 	},
 	"devDependencies": {
 		"husky": "^8.0.0",

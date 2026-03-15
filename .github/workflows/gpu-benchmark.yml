@@ -1,0 +1,81 @@
+name: GPU Benchmark (self-hosted)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  gpu-benchmark:
+    name: Run GPU benchmark on self-hosted runner
+    runs-on: [self-hosted, gpu]
+    permissions: {}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Ensure Docker is available
+        run: |
+          if ! command -v docker >/dev/null 2>&1; then
+            echo "Docker is not installed on this runner. Aborting." >&2
+            exit 1
+          fi
+
+      - name: Check NVIDIA GPU
+        run: |
+          if ! command -v nvidia-smi >/dev/null 2>&1; then
+            echo "nvidia-smi not found. GPU drivers or toolkit missing." >&2
+            exit 1
+          fi
+
+      - name: Build GPU Docker image
+        run: |
+          docker build -t continue-llm-gpu -f Dockerfile.gpu .
+
+      - name: Run benchmark container
+        id: benchmark
+        run: |
+          # Requires NVIDIA Container Toolkit configured on the runner
+          docker run --gpus all --rm continue-llm-gpu python3 examples/benchmark_gpu.py | tee benchmark-output.txt
+
+      
+
+      - name: Print summary
+        run: |
+          echo '--- GPU benchmark completed. Output:'
+          cat benchmark-output.txt || true
+
+      - name: Save GPU diagnostics (on failure)
+        if: failure()
+        run: |
+          mkdir -p diagnostics
+          echo "=== nvidia-smi ===" > diagnostics/nvidia-smi.txt
+          nvidia-smi >> diagnostics/nvidia-smi.txt 2>&1 || echo "nvidia-smi failed or not available" >> diagnostics/nvidia-smi.txt
+          echo "\n=== docker info ===" > diagnostics/docker-info.txt
+          docker info >> diagnostics/docker-info.txt 2>&1 || echo "docker info failed" >> diagnostics/docker-info.txt
+
+      - name: Upload GPU diagnostics artifact (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gpu-diagnostics
+          path: diagnostics/
+
+      - name: Ensure benchmark output exists
+        run: |
+          if [ ! -f benchmark-output.txt ]; then
+            echo "(no benchmark output)" > benchmark-output.txt
+          fi
+
+      - name: Upload benchmark output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gpu-benchmark-output
+          path: benchmark-output.txt
+
+# Notes:
+# - This workflow requires a self-hosted runner with Docker and the NVIDIA Container Toolkit
+#   (nvidia-docker / nvidia-container-toolkit) installed and configured.
+# - Tag your self-hosted runner with labels `self-hosted` and `gpu` (or adjust `runs-on`).
+# - For cloud CI with GPUs, adapt `runs-on` and ensure the runner environment supports GPUs.

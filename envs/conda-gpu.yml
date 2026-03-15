@@ -1,0 +1,12 @@
+name: continue-gpu
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - cudatoolkit=12.2
+  - pip:
+    - torch --extra-index-url https://download.pytorch.org/whl/cu122
+    - torchvision
+    - torchaudio

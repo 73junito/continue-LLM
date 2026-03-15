@@ -6,36 +6,47 @@
       "title": "StarCoder2-Code",
       "provider": "ollama",
       "model": "starcoder2:3b",
+      "apiBase": "http://127.0.0.1:11435",
       "contextLength": 16384,
-      "maxTokens": 1500,
-      "temperature": 0.15,
-      "topP": 0.9,
-      "topK": 50,
-      "repeatPenalty": 1.1,
-      "stop": ["<file_sep>", "<|end_of_text|>", "</s>"],
+      "completionOptions": {
+        "temperature": 0.15,
+        "maxTokens": 1500,
+        "topP": 0.9,
+        "topK": 50,
+        "repeatPenalty": 1.1,
+        "stop": ["<file_sep>", "<|end_of_text|>", "</s>"]
+      },
       "usage": ["file-level coding", "autocomplete", "unit test generation"]
     },
     {
       "title": "DeepSeek-Coder",
       "provider": "ollama",
       "model": "deepseek-coder:6.7b",
+      "apiBase": "http://127.0.0.1:11435",
       "contextLength": 16384,
-      "maxTokens": 2000,
-      "temperature": 0.2,
-      "topP": 0.95,
+      "completionOptions": {
+        "temperature": 0.2,
+        "maxTokens": 2000,
+        "topP": 0.95
+      },
       "usage": ["multi-file refactoring", "performance optimization", "complex edits"]
     },
     {
       "title": "Llama3-Reasoning",
       "provider": "ollama",
       "model": "llama3",
+      "apiBase": "http://127.0.0.1:11435",
       "contextLength": 16384,
-      "maxTokens": 2000,
-      "temperature": 0.35,
-      "topP": 0.95,
+      "completionOptions": {
+        "temperature": 0.35,
+        "maxTokens": 2000,
+        "topP": 0.95
+      },
       "usage": ["explanations", "planning", "architecture analysis"]
     }
   ],
+
+  "defaultModel": "StarCoder2-Code",
 
   "embeddingsProvider": {
     "provider": "ollama",
@@ -84,8 +95,10 @@
     "title": "StarCoder2-Autocomplete",
     "provider": "ollama",
     "model": "starcoder2:3b",
-    "temperature": 0.15,
-    "maxTokens": 300
+    "completionOptions": {
+      "temperature": 0.15,
+      "maxTokens": 300
+    }
   },
 
   "allowAnonymousTelemetry": false

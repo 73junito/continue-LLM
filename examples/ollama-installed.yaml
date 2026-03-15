@@ -1,0 +1,43 @@
+schema: config.schema.json
+name: Ollama Installed Models
+version: 1.0.0
+
+models:
+  - id: mistral-7b
+    name: Mistral 7B
+    description: "High-quality general purpose model"
+    provider: ollama
+    model: mistral:7b
+    apiBase: 'http://127.0.0.1:11435'
+
+  - id: qwen3-1.7b
+    name: Qwen3 1.7B
+    description: "Versatile Qwen 1.7B model"
+    provider: ollama
+    model: qwen3:1.7b
+    apiBase: 'http://127.0.0.1:11435'
+
+  - id: qwen2-math-1.5b
+    name: Qwen2-Math 1.5B
+    description: "Specialized Qwen math model"
+    provider: ollama
+    model: qwen2-math:1.5b
+    apiBase: 'http://127.0.0.1:11435'
+
+routes:
+  - match: '(mistral|mistral:7b)'
+    model: mistral-7b
+  - match: '(qwen3|qwen3:1.7b)'
+    model: qwen3-1.7b
+  - match: '(qwen2|qwen2-math:1.5b)'
+    model: qwen2-math-1.5b
+
+defaults:
+  timeout_seconds: 120
+  max_tokens: 2048
+
+# Optional: if you use a more permissive schema, you can add per-model runtime args like:
+# modelArgs:
+#   max_tokens: 2048
+#   temperature: 0.7
+# but `config.schema.json` in this repo requires strict fields, so those are shown as comments.

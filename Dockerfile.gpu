@@ -1,0 +1,30 @@
+
+FROM nvidia/cuda:12.2.0-cudnn8-runtime-ubuntu22.04
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends wget bzip2 ca-certificates git && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Miniconda
+ENV CONDA_DIR=/opt/conda
+ENV PATH=$CONDA_DIR/bin:$PATH
+RUN wget -qO /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
+    bash /tmp/miniconda.sh -b -p ${CONDA_DIR} && \
+    rm /tmp/miniconda.sh && \
+    ${CONDA_DIR}/bin/conda clean -afy
+
+# Copy Conda environment file and create the GPU environment
+COPY envs/conda-gpu.yml /tmp/conda-gpu.yml
+RUN ${CONDA_DIR}/bin/conda env create -f /tmp/conda-gpu.yml && \
+    ${CONDA_DIR}/bin/conda clean -afy && \
+    rm /tmp/conda-gpu.yml
+
+# Ensure the created env is the default PATH
+ENV PATH=${CONDA_DIR}/envs/continue-gpu/bin:${CONDA_DIR}/bin:$PATH
+
+WORKDIR /workspace
+COPY . /workspace
+
+SHELL ["/bin/bash", "-lc"]
+CMD ["bash"]
