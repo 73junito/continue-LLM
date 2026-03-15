@@ -32,8 +32,8 @@ jobs:
 
       - name: Validate YAML/schema
         run: |
-          npm run lint-schema || true
-          npm run validate-config || true
+          npm run lint-schema
+          npm run validate-config
 
       - name: Setup Python
         uses: actions/setup-python@v5
