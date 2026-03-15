@@ -322,7 +322,8 @@ async def root_post(req: Request):
 
 @app.get('/diag')
 def diag():
-    import shutil, subprocess
+    import shutil
+    import subprocess
     ollama_path = shutil.which('ollama')
     env_model = os.environ.get('OLLAMA_MODEL')
     env_base = os.environ.get('OLLAMA_BASE_URL')

@@ -207,7 +207,7 @@ class Handler(BaseHTTPRequestHandler):
 def run(host='0.0.0.0', port=11435):
     global LATENCY
     server = ThreadingHTTPServer((host, port), Handler)
-    print(f'Streaming supported: yes')
+    print('Streaming supported: yes')
     if LATENCY:
         print(f'Latency simulation: {LATENCY}s')
     print(f'Mock server listening on http://{host}:{port} (CTRL+C to stop)')

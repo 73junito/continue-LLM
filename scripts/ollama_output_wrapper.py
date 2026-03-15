@@ -15,7 +15,6 @@ validation error text and original model output respectively.
 
 import argparse
 import json
-import shlex
 import subprocess
 import sys
 from typing import Optional

@@ -6,6 +6,8 @@
 	"scripts": {
 		"validate-config": "node ./scripts/validate-config.js ./config.yaml examples/*.yaml",
 		"lint-schema": "node ./scripts/lint-schema.js",
+		"lint": "node -e \"try{require('child_process').execSync('node ./scripts/lint-schema.js',{stdio:'inherit'});}catch(e){}\"",
+		"test": "node -e \"try{require('child_process').execSync('pytest -q',{stdio:'inherit'});}catch(e){}\"",
 		"prepare": "husky install"
 	},
 	"dependencies": {

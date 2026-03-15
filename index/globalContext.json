@@ -17,7 +17,7 @@
   },
   "selectedModelsByProfileId": {
     "local": {
-      "chat": "Llama3",
+      "chat": "Mistral 7B",
       "edit": "StarCoder2.3b",
       "apply": "Llama3",
       "embed": "Transformers.js (Built-In)",
