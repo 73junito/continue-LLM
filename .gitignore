@@ -46,3 +46,9 @@ __pycache__/
 
 # Node
 node_modules/
+
+# Local SQLite DBs
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
