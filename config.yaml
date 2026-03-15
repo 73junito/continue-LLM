@@ -51,5 +51,3 @@ routes:
 defaults:
   timeout_seconds: 120
   max_tokens: 8192
-
- 
